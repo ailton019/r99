@@ -1,0 +1,246 @@
+[
+  {
+    "id": 1,
+    "nome": "Nota Fiscal - Emissão",
+    "modulo": "Faturamento",
+    "categoria": "Fiscal",
+    "nivel": "Media",
+    "palavrasChave": ["nota", "nf", "emissao", "faturamento"],
+    "caminho": "ERP > Faturamento > Nota Fiscal > Emissão de Nota Fiscal > Emitir",
+    "permissoes": [
+      "Acesso ao módulo Faturamento",
+      "Permissão Emitir NF",
+      "Permissão Alterar Série"
+    ],
+    "checklist": [
+      "Validar caminho",
+      "Validar permissões do usuário",
+      "Testar com usuário administrador",
+      "Verificar parametrização de série"
+    ],
+    "escalar": "Escalar apenas se permissões estiverem corretas."
+  },
+  {
+    "id": 2,
+    "nome": "Devolução de Compra - Emissão",
+    "modulo": "Faturamento",
+    "categoria": "Fiscal",
+    "nivel": "Media",
+    "palavrasChave": ["nota", "nf", "emissao", "faturamento", "devolucao"],
+    "caminho": "ERP > Faturamento > Nota Fiscal > Emissão de Nota Fiscal > Devolução de Compra",
+    "permissoes": [
+      "Acesso ao módulo Faturamento",
+      "Permissão Emitir NF",
+      "Permissão Fazer Devolução de Compra",
+      "Permissão Alterar Série"
+    ],
+    "checklist": [
+      "Validar caminho",
+      "Validar permissões do usuário",
+      "Testar com usuário administrador",
+      "Verificar parametrização de série"
+    ],
+    "escalar": "Escalar apenas se permissões estiverem corretas."
+  },
+  {
+    "id": 3,
+    "nome": "Nota Fiscal - Cancelamento",
+    "modulo": "Faturamento",
+    "categoria": "Fiscal",
+    "nivel": "Media",
+    "palavrasChave": ["nota", "nf", "cancelamento", "fiscal"],
+    "caminho": "ERP > Faturamento > Nota Fiscal > Gerenciar Notas > Cancelar",
+    "permissoes": [
+      "Acesso ao módulo Faturamento",
+      "Permissão Cancelar NF",
+      "Permissão Visualizar NF",
+      "Permissão Alterar Série"
+    ],
+    "checklist": [
+      "Validar prazo legal de cancelamento",
+      "Verificar se nota está autorizada",
+      "Validar vínculo financeiro",
+      "Testar com usuário administrador"
+    ],
+    "escalar": "Escalar apenas se rejeição SEFAZ persistir."
+  },
+  {
+    "id": 4,
+    "nome": "Carta de Correção Eletrônica (CC-e)",
+    "modulo": "Faturamento",
+    "categoria": "Fiscal",
+    "nivel": "Media",
+    "palavrasChave": ["cce", "carta", "correcao", "nota"],
+    "caminho": "ERP > Faturamento > Nota Fiscal > Gerenciar Notas > Carta de Correção",
+    "permissoes": [
+      "Acesso ao módulo Faturamento",
+      "Permissão Emitir CC-e",
+      "Permissão Visualizar NF"
+    ],
+    "checklist": [
+      "Verificar se NF está autorizada",
+      "Validar limite de 20 CC-e por nota",
+      "Confirmar que campo é passível de correção"
+    ],
+    "escalar": "Escalar se erro de schema ou rejeição técnica."
+  },
+  {
+    "id": 5,
+    "nome": "Inutilização de Numeração NF-e",
+    "modulo": "Faturamento",
+    "categoria": "Fiscal",
+    "nivel": "Alta",
+    "palavrasChave": ["inutilizacao", "numeracao", "serie", "nfe"],
+    "caminho": "ERP > Faturamento > Nota Fiscal > Inutilização de Numeração",
+    "permissoes": [
+      "Acesso ao módulo Faturamento",
+      "Permissão Inutilizar Numeração",
+      "Permissão Alterar Série"
+    ],
+    "checklist": [
+      "Verificar intervalo de numeração",
+      "Confirmar que número não foi utilizado",
+      "Validar certificado digital"
+    ],
+    "escalar": "Escalar se retorno SEFAZ não for autorizado."
+  },
+  {
+    "id": 6,
+    "nome": "Entrada de Nota Fiscal de Compra",
+    "modulo": "Estoque",
+    "categoria": "Fiscal",
+    "nivel": "Alta",
+    "palavrasChave": ["entrada", "compra", "fornecedor", "xml"],
+    "caminho": "ERP > Estoque > Movimentações > Entrada de Nota Fiscal",
+    "permissoes": [
+      "Acesso ao módulo Estoque",
+      "Permissão Lançar Nota de Entrada",
+      "Permissão Alterar Custo"
+    ],
+    "checklist": [
+      "Validar importação XML",
+      "Conferir CST/CFOP",
+      "Validar atualização de estoque",
+      "Verificar impacto financeiro"
+    ],
+    "escalar": "Escalar se houver erro de schema XML."
+  },
+  {
+    "id": 7,
+    "nome": "Recalculo de Custos",
+    "modulo": "Estoque",
+    "categoria": "Custos",
+    "nivel": "Alta",
+    "palavrasChave": ["recalculo", "custo", "estoque", "processamento"],
+    "caminho": "ERP > Estoque > Custos > Recalculo de Custos",
+    "permissoes": [
+      "Acesso ao módulo Estoque",
+      "Permissão Recalcular Custos"
+    ],
+    "checklist": [
+      "Processar por período reduzido",
+      "Evitar processamento total simultâneo",
+      "Validar impacto financeiro",
+      "Testar em base menor"
+    ],
+    "escalar": "Escalar apenas se processamento travar mesmo fracionado."
+  },
+  {
+    "id": 8,
+    "nome": "Inventário de Estoque",
+    "modulo": "Estoque",
+    "categoria": "Controle",
+    "nivel": "Media",
+    "palavrasChave": ["inventario", "contagem", "estoque"],
+    "caminho": "ERP > Estoque > Inventário > Criar Inventário",
+    "permissoes": [
+      "Acesso ao módulo Estoque",
+      "Permissão Criar Inventário",
+      "Permissão Ajustar Estoque"
+    ],
+    "checklist": [
+      "Validar loja selecionada",
+      "Conferir bloqueio de movimentação",
+      "Revisar divergências antes de fechar"
+    ],
+    "escalar": "Escalar se divergência sistêmica persistir."
+  },
+  {
+    "id": 9,
+    "nome": "Movimento Diário",
+    "modulo": "Relatórios",
+    "categoria": "Financeiro",
+    "nivel": "Media",
+    "palavrasChave": ["movimento", "diario", "vendas", "caixa"],
+    "caminho": "ERP > Relatórios > Financeiro > Movimento Diário",
+    "permissoes": [
+      "Acesso ao módulo Relatórios",
+      "Permissão Visualizar Movimento Diário"
+    ],
+    "checklist": [
+      "Validar período selecionado",
+      "Comparar com relatório de vendas",
+      "Conferir filtros de loja"
+    ],
+    "escalar": "Escalar apenas se divergência não for filtro."
+  },
+  {
+    "id": 10,
+    "nome": "Contas a Receber - Baixa Manual",
+    "modulo": "Financeiro",
+    "categoria": "Financeiro",
+    "nivel": "Media",
+    "palavrasChave": ["receber", "baixa", "financeiro"],
+    "caminho": "ERP > Financeiro > Contas a Receber > Baixar Título",
+    "permissoes": [
+      "Acesso ao módulo Financeiro",
+      "Permissão Baixar Título",
+      "Permissão Alterar Valor"
+    ],
+    "checklist": [
+      "Validar valor recebido",
+      "Conferir juros/multa",
+      "Validar forma de pagamento"
+    ],
+    "escalar": "Escalar se título estiver vinculado a conciliação automática."
+  },
+  {
+    "id": 11,
+    "nome": "Contas a Pagar - Lançamento Manual",
+    "modulo": "Financeiro",
+    "categoria": "Financeiro",
+    "nivel": "Media",
+    "palavrasChave": ["pagar", "fornecedor", "financeiro"],
+    "caminho": "ERP > Financeiro > Contas a Pagar > Novo Lançamento",
+    "permissoes": [
+      "Acesso ao módulo Financeiro",
+      "Permissão Incluir Título",
+      "Permissão Alterar Centro de Custo"
+    ],
+    "checklist": [
+      "Validar fornecedor",
+      "Conferir vencimento",
+      "Revisar centro de custo"
+    ],
+    "escalar": "Escalar apenas se erro sistêmico."
+  },
+  {
+    "id": 12,
+    "nome": "Parametrização de Série de Nota Fiscal",
+    "modulo": "Configurações",
+    "categoria": "Fiscal",
+    "nivel": "Alta",
+    "palavrasChave": ["serie", "parametrizacao", "nota"],
+    "caminho": "ERP > Configurações > Fiscal > Série de Nota Fiscal",
+    "permissoes": [
+      "Acesso ao módulo Configurações",
+      "Permissão Alterar Série NF"
+    ],
+    "checklist": [
+      "Validar modelo NF-e/NFC-e",
+      "Conferir numeração inicial",
+      "Verificar ambiente (Produção/Homologação)"
+    ],
+    "escalar": "Escalar se numeração estiver inconsistente."
+  }
+]
