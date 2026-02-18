@@ -2,19 +2,142 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>R99 - Base </title>
+    <title>R99 - Base Operacional N1</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./img/otimizacao.png" type="">
 </head>
 <body>
 
-    <h1>ERP  - Base Operacional N1</h1>
+    <div class="header-actions">
+        <h1>ERP - Base Operacional N1</h1>
+        <button class="btn-jason" onclick="abrirModalNovo()">
+            <span class="btn-icon">📋</span> Novo Passo a Passo (Jason)
+        </button>
+    </div>
 
-    <input type="text" id="searchInput" placeholder="Pesquisar..." onkeyup="buscarRotina()">
-    <button onclick="buscarRotina()"> </button>
+    <!-- Cards de Estatísticas -->
+    <div class="stats-grid" id="statsContainer"></div>
 
+
+
+    <!-- Resultado da Busca Original -->
     <div id="resultado"></div>
 
-<script src="./js/script.js"></script>
+    <!-- Tabela de Procedimentos Jason COM BUSCA -->
+    <h2>📋 Procedimentos Disponíveis</h2>
+    
+    <!-- Barra de busca para a tabela Jason -->
+    <div class="search-container jason-search">
+        <label for="searchJason">🔍 Filtrar procedimentos:</label>
+        <input 
+            type="text" 
+            id="searchJason" 
+            placeholder="Digite para filtrar a tabela..." 
+            onkeyup="buscarNaTabelaJason()"
+        >
+    </div>
+
+    <div class="jason-table-container">
+        <table class="jason-table" id="tabelaProcedimentos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Procedimento</th>
+                    <th>Módulo</th>
+                    <th>Nível</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaBody">
+                <!-- Preenchido via JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal do Jason -->
+    <div id="modalJason" class="modal-jason">
+        <!-- ... conteúdo do modal (igual ao anterior) ... -->
+        <div class="modal-content-jason">
+            <div class="modal-header-jason">
+                <h2 id="modalTitulo">📋 Novo Passo a Passo</h2>
+            </div>
+            <div class="modal-body-jason">
+                <form id="procedimentoForm">
+                    <input type="hidden" id="procedimentoId" value="">
+                    
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Nome do Procedimento *</label>
+                            <input type="text" class="form-control" id="nome" required placeholder="Ex: Nota Fiscal - Emissão">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Módulo *</label>
+                            <select class="form-control" id="modulo" required>
+                                <option value="">Selecione...</option>
+                                <option value="Faturamento">Faturamento</option>
+                                <option value="Estoque">Estoque</option>
+                                <option value="Financeiro">Financeiro</option>
+                                <option value="Relatórios">Relatórios</option>
+                                <option value="Configurações">Configurações</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Categoria *</label>
+                            <input type="text" class="form-control" id="categoria" required placeholder="Ex: Fiscal">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nível *</label>
+                            <select class="form-control" id="nivel" required>
+                                <option value="Media">Média</option>
+                                <option value="Alta">Alta</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>ID (auto)</label>
+                            <input type="text" class="form-control" id="idDisplay" readonly placeholder="Auto gerado">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Palavras-Chave *</label>
+                            <input type="text" class="form-control" id="palavrasChave" required placeholder="Ex: nota, nf, emissao (separadas por vírgula)">
+                            <small class="helper-text">Separe por vírgula</small>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Caminho no ERP *</label>
+                            <input type="text" class="form-control" id="caminho" required placeholder="Ex: ERP > Faturamento > Nota Fiscal">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Permissões *</label>
+                            <textarea class="form-control" id="permissoes" required placeholder="Uma permissão por linha" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Checklist *</label>
+                            <textarea class="form-control" id="checklist" required placeholder="Um item por linha" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Quando escalar? *</label>
+                            <textarea class="form-control" id="escalar" required placeholder="Critérios para escalar" rows="2"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer-jason">
+                <button class="btn-jason btn-secondary" onclick="fecharModal()">Cancelar</button>
+                <button class="btn-jason btn-success" onclick="salvarProcedimento()">💾 Salvar Procedimento</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/jason-manager.js.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
