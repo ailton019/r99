@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "nome": "Emissão de Nota Fiscal",
+    "modulo": "Faturamento",
+    "palavrasChave": ["nota", "nf", "emissao"],
+    "caminho": "ERP > Faturamento > Nota Fiscal",
+    "permissoes": [
+      "Acesso ao módulo Faturamento",
+      "Permissão para emitir NF"
+    ],
+    "checklist": [
+      "Selecionar cliente",
+      "Adicionar produtos",
+      "Conferir impostos",
+      "Confirmar emissão"
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Fechamento de Caixa",
+    "modulo": "Financeiro",
+    "palavrasChave": ["caixa", "fechamento"],
+    "caminho": "ERP > Financeiro > Caixa",
+    "permissoes": [
+      "Acesso ao módulo Financeiro"
+    ],
+    "checklist": [
+      "Conferir valores",
+      "Gerar relatório",
+      "Encerrar caixa"
+    ]
+  },
+  {
+  "id": 1,
+  "nome": "Sangria e Suprimento ",
+  "modulo": "Fiscal ",
+  "palavrasChave": [
+    "Sangria",
+    "sangria",
+    "Suprimento",
+    "suprimento"
+  ],
+  "caminho": "Faturamento > Rotinas Fiscais (Novo) > Sangria e Suprimento",
+  "permissoes": [
+    "Permissoes dentro do sangria "
+  ],
+  "checklist": [
+    "olhar isso "
+  ]
+}
+
+]

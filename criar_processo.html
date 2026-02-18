@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criador de Processos JSON</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.formulario,
+.resultado {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.formulario {
+    background: #16213e;
+}
+
+.resultado {
+    background: #0f3460;
+}
+
+h2 {
+    color: #4affb5;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #4a90ff;
+    padding-bottom: 10px;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b28aff;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: #1a1a2e;
+    border: 2px solid #4a90ff;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #4affb5;
+    box-shadow: 0 0 15px #4affb5;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.dica {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 5px;
+}
+
+button {
+    background: linear-gradient(135deg, #4affb5, #b28aff);
+    color: #1a1a2e;
+    border: none;
+    padding: 12px 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #4affb5;
+}
+
+.json-output {
+    background: #1a1a2e;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #4affb5;
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    color: #b28aff;
+    margin-bottom: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.copiar-btn {
+    background: #4a90ff;
+}
+
+.novo-processo {
+    background: #4a90ff;
+}
+
+.limpar {
+    background: #ff4a4a;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.acoes button {
+    flex: 1;
+}
+
+.contador {
+    text-align: center;
+    margin-top: 20px;
+    color: #4affb5;
+}
+
+/* BOTÃO VOLTAR NO FINAL */
+.voltar-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.btn-voltar {
+    text-decoration: none;
+    background: linear-gradient(135deg, #4affb5, #b28aff);
+    color: #1a1a2e;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #4affb5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- FORMULÁRIO -->
+<div class="formulario">
+<h2>Criar Novo Processo</h2>
+
+<div class="campo">
+<label>ID do Processo</label>
+<input type="number" id="id" value="1" min="1">
+</div>
+
+<div class="campo">
+<label>Nome</label>
+<input type="text" id="nome" placeholder="Ex: Fechamento de Caixa">
+</div>
+
+<div class="campo">
+<label>Módulo</label>
+<input type="text" id="modulo" placeholder="Ex: Financeiro">
+</div>
+
+<div class="campo">
+<label>Palavras-chave</label>
+<input type="text" id="palavrasChave" placeholder="Separar por vírgula">
+</div>
+
+<div class="campo">
+<label>Caminho</label>
+<input type="text" id="caminho">
+</div>
+
+<div class="campo">
+<label>Permissões (uma por linha)</label>
+<textarea id="permissoes"></textarea>
+</div>
+
+<div class="campo">
+<label>Checklist (um por linha)</label>
+<textarea id="checklist"></textarea>
+</div>
+
+<div class="acoes">
+<button onclick="gerarJSON()">Gerar</button>
+<button onclick="limparForm()" class="limpar">Limpar</button>
+</div>
+
+<div class="contador">
+Total: <span id="totalProcessos">0</span>
+</div>
+
+</div>
+
+<!-- RESULTADO -->
+<div class="resultado">
+<h2>JSON Gerado</h2>
+
+<div id="jsonContainer" class="json-output">
+Clique em "Gerar" para criar o JSON
+</div>
+
+<div class="acoes">
+<button onclick="copiarJSON()" class="copiar-btn">Copiar JSON</button>
+<button onclick="adicionarAoArray()" class="novo-processo">Adicionar</button>
+</div>
+
+<div class="campo" style="margin-top:20px;">
+<label>Lista completa</label>
+<textarea id="listaProcessos" style="min-height:200px;" readonly></textarea>
+</div>
+
+<button onclick="copiarLista()" class="copiar-btn">Copiar Lista Completa</button>
+
+</div>
+</div>
+
+<!-- BOTÃO VOLTAR -->
+<div class="voltar-container">
+<a href="index.html" class="btn-voltar">⬅ Voltar para Base de Processos</a>
+</div>
+
+<script>
+let processos = [];
+
+function gerarJSON() {
+    let processo = montarObjeto();
+    let json = JSON.stringify(processo, null, 2);
+    document.getElementById('jsonContainer').innerText = json;
+    return processo;
+}
+
+function montarObjeto() {
+    let nome = document.getElementById('nome').value || "Sem nome";
+    let modulo = document.getElementById('modulo').value || "Geral";
+    let palavras = document.getElementById('palavrasChave').value;
+    let caminho = document.getElementById('caminho').value || `ERP > ${modulo} > ${nome}`;
+    let permissoes = document.getElementById('permissoes').value;
+    let checklist = document.getElementById('checklist').value;
+
+    return {
+        id: parseInt(document.getElementById('id').value),
+        nome,
+        modulo,
+        palavrasChave: palavras ? palavras.split(',').map(p => p.trim()) : ["processo"],
+        caminho,
+        permissoes: permissoes ? permissoes.split('\n').filter(p => p.trim()) : [],
+        checklist: checklist ? checklist.split('\n').filter(c => c.trim()) : []
+    };
+}
+
+function adicionarAoArray() {
+    let processo = gerarJSON();
+    processos.push(processo);
+    document.getElementById('totalProcessos').innerText = processos.length;
+    atualizarLista();
+    document.getElementById('id').value = processos.length + 1;
+}
+
+function atualizarLista() {
+    document.getElementById('listaProcessos').value =
+        JSON.stringify({ processos }, null, 2);
+}
+
+function copiarJSON() {
+    navigator.clipboard.writeText(
+        document.getElementById('jsonContainer').innerText
+    );
+}
+
+function copiarLista() {
+    navigator.clipboard.writeText(
+        document.getElementById('listaProcessos').value
+    );
+}
+
+function limparForm() {
+    document.querySelectorAll("input, textarea").forEach(el => {
+        if (el.id !== "id") el.value = "";
+    });
+}
+</script>
+
+</body>
+</html>
