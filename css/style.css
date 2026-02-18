@@ -6,6 +6,7 @@ body {
 
 h1 {
     color: #1f2d3d;
+    text-align: center;
 }
 
 input {
@@ -14,9 +15,16 @@ input {
 }
 
 button {
-    padding: 8px 15px;
     cursor: pointer;
+    background-image: url("../img/ampliar.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 25px; /* ou cover */
 }
+
 
 .card {
     background: white;
