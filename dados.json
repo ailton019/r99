@@ -4,35 +4,42 @@
     "nome": "Emissão de Nota Fiscal",
     "modulo": "Faturamento",
     "palavrasChave": ["nota", "nf", "emissao"],
-    "caminho": "ERP > Faturamento > Nota Fiscal",
+    "caminho": "ERP > Faturamento > Nota Fiscal > Emitir Nota Fiscal de Saída",
     "permissoes": [
       "Acesso ao módulo Faturamento",
-      "Permissão para emitir NF"
+      "Permissão para emitir NF",
+      "Cadastrar Nota Fiscais",
+      "NF-e",
+      "Gerar Arquivo NF-e (Normal)"
+
     ],
     "checklist": [
-      "Selecionar cliente",
-      "Adicionar produtos",
-      "Conferir impostos",
-      "Confirmar emissão"
+      "Selecionar cliente > Validar Cadastro do Cliente",
+      "Adicionar produtos > Verificar Saldo, Config. tribuitária, Natureza de Operação",
+      "Conferir impostos > Detalhamento Tributário",
+      "Confirmar emissão, após validar forma de pagamento."
     ]
   },
   {
     "id": 2,
     "nome": "Fechamento de Caixa",
-    "modulo": "Financeiro",
+    "modulo": "Faturamento",
     "palavrasChave": ["caixa", "fechamento"],
-    "caminho": "ERP > Financeiro > Caixa",
+    "caminho": "ERP > Faturamento > Venda Fácil > Fechamento de Caixa",
     "permissoes": [
-      "Acesso ao módulo Financeiro"
+      "Venda Fácil",
+      "Desmarcar o campo Não permitir Fechamento de Caixa"
     ],
     "checklist": [
-      "Conferir valores",
-      "Gerar relatório",
-      "Encerrar caixa"
+      "Conferir valores, faturados, exemplo no movimento diário",
+      "Conferir se usuário, que está fechando o caixa e o mesmo, que abriu",
+      "Validar, se o valores informados, e o mesmo que faturado",
+      "Se o cliente, usa algum filtro nos relatórios, ex: desconsiderar vale trocas",
+      "Se houve a sincronizaçao das vendas, do POS com o ERP, relatórios."
     ]
   },
   {
-  "id": 1,
+  "id": 3,
   "nome": "Sangria e Suprimento ",
   "modulo": "Fiscal ",
   "palavrasChave": [
@@ -43,25 +50,40 @@
   ],
   "caminho": "Faturamento > Rotinas Fiscais (Novo) > Sangria e Suprimento",
   "permissoes": [
-    "Permissoes dentro do sangria "
+  "Faturamento > Sangria e Suprimentos",
+  "Desmarcado - Bloquear Acesso Rotinas Fiscais (Cadastro Sangrias/Suprimentos)",
+  "Desmarcado - Bloquear Acesso Rotinas Fiscais (Listagem Sangrias/Suprimentos)",
+  "Data retroativa",
+  "Exclusão",
+  "Lançamento",
+  "Permitir editar sangria",
+  "Permitir lançamento de sangria e suprimentos para outro usuário",
+  "Visualizar todos os usuários no Relatório"
   ],
   "checklist": [
-    "olhar isso "
+  "Verificar se as permissões, estão marcados.",
+  "Verificar se a sangria ou suprimento foi lançada com sucesso"
   ]
-},{
-  "id": 1,
-  "nome": "jdhsjds",
-  "modulo": "asdas",
+  },
+  {
+  "id": 4,
+  "nome": "Cadastro de Orçamento de Venda - Microvix ERP",
+  "modulo": "Faturamento",
   "palavrasChave": [
-    "sadas"
+    "Orçamentos/Pedidos",
+    "orçamento",
+    "pedido",
+    "orcamento",
+    "pedido"
   ],
-  "caminho": "sadas",
+  "caminho": "Faturamento - Microvix > Orçamento / Pedido > Cadastro de Orçamento de Venda",
   "permissoes": [
-    "sad"
+    "(Grupo Faturamento, Subgrupo Permissões Gerais de Orçamento/Pedido, Permissões: \"Orçamentos/Pedidos de Venda\" e \"Modificar observação no orçamento\")."
   ],
   "checklist": [
-    "asd"
+ "Para utilizar a rotina de Orçamento/Pedido, é necessário que o parâmetro \"Utilizar configurações realizadas para a homologação do POS\" disponível em Empresa > Parâmetros Globais > Acesso Restrito > POS > Grupo Venda esteja desmarcado.",
+ "Validar as permissões de usuário."
   ]
-}
+  }
 
 ]

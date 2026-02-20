@@ -48,7 +48,7 @@ function buscarProcesso() {
             </div>
 
             <div style="margin-top: 10px;">
-                <p><strong>Passo a Passo:</strong></p>
+                <p><strong>Check List, para análise:</strong></p>
                 <ol style="padding-left: 20px; color: #334155; line-height: 1.6;">
                     ${p.checklist.map(item => `<li>${item}</li>`).join("")}
                 </ol>
