@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "nome": "Emissão de Nota Fiscal",
+    "modulo": "Faturamento",
+    "submodulo": null,
+    "descricao": null,
+    "palavrasChave": ["nota", "nf", "emissao"],
+    "caminho": "ERP > Faturamento > Nota Fiscal > Emitir Nota Fiscal de Saída",
+    "permissoes": [
+      "Acesso ao módulo Faturamento",
+      "Permissão para emitir NF",
+      "Cadastrar Nota Fiscais",
+      "NF-e",
+      "Gerar Arquivo NF-e (Normal)"
+    ],
+    "checklist": [
+      "Selecionar cliente > Validar Cadastro do Cliente",
+      "Adicionar produtos > Verificar Saldo, Config. tributária, Natureza de Operação",
+      "Conferir impostos > Detalhamento Tributário",
+      "Confirmar emissão após validar forma de pagamento"
+    ],
+    "preRequisitos": [],
+    "parametrosChave": [],
+    "relacionados": [],
+    "linksOficiais": [],
+    "ultimaValidacao": "2026-02-20"
+  },
+  {
+    "id": 2,
+    "nome": "Fechamento de Caixa",
+    "modulo": "Faturamento",
+    "submodulo": null,
+    "descricao": null,
+    "palavrasChave": ["caixa", "fechamento"],
+    "caminho": "ERP > Faturamento > Venda Fácil > Fechamento de Caixa",
+    "permissoes": [
+      "Venda Fácil",
+      "Desmarcar o campo Não permitir Fechamento de Caixa"
+    ],
+    "checklist": [
+      "Conferir valores faturados no movimento diário",
+      "Validar se o usuário que está fechando é o mesmo que abriu",
+      "Validar se os valores informados correspondem ao faturado",
+      "Verificar filtros aplicados (ex: desconsiderar vale-trocas)",
+      "Confirmar sincronização das vendas do POS com ERP"
+    ],
+    "preRequisitos": [],
+    "parametrosChave": [],
+    "relacionados": [],
+    "linksOficiais": [],
+    "ultimaValidacao": "2026-02-20"
+  },
+  {
+    "id": 3,
+    "nome": "Sangria e Suprimento",
+    "modulo": "Faturamento",
+    "submodulo": "Rotinas Fiscais",
+    "descricao": "Lançamento e controle de sangrias e suprimentos no caixa.",
+    "palavrasChave": ["sangria", "suprimento"],
+    "caminho": "Faturamento > Rotinas Fiscais (Novo) > Sangria e Suprimento",
+    "permissoes": [
+      "Faturamento > Sangria e Suprimentos",
+      "Desmarcado - Bloquear Acesso Rotinas Fiscais (Cadastro)",
+      "Desmarcado - Bloquear Acesso Rotinas Fiscais (Listagem)",
+      "Permitir data retroativa",
+      "Permitir exclusão",
+      "Permitir lançamento",
+      "Permitir editar sangria",
+      "Permitir lançamento para outro usuário",
+      "Visualizar todos os usuários no relatório"
+    ],
+    "checklist": [
+      "Verificar se as permissões estão corretamente configuradas",
+      "Validar se a sangria ou suprimento foi lançada com sucesso"
+    ],
+    "preRequisitos": [],
+    "parametrosChave": [],
+    "relacionados": [],
+    "linksOficiais": [],
+    "ultimaValidacao": "2026-02-20"
+  },
+  {
+    "id": 4,
+    "nome": "Cadastro de Orçamento de Venda - Microvix ERP",
+    "modulo": "Faturamento",
+    "submodulo": "Orçamento/Pedido",
+    "descricao": "Cadastro de orçamentos e pedidos de venda no ERP.",
+    "palavrasChave": ["orcamento", "pedido", "orçamentos/pedidos"],
+    "caminho": "Faturamento - Microvix > Orçamento / Pedido > Cadastro de Orçamento de Venda",
+    "permissoes": [
+      "Orçamentos/Pedidos de Venda",
+      "Modificar observação no orçamento"
+    ],
+    "checklist": [
+      "Validar parâmetro 'Utilizar configurações realizadas para homologação do POS' desmarcado",
+      "Validar permissões do usuário"
+    ],
+    "preRequisitos": [],
+    "parametrosChave": [
+      {
+        "local": "Empresa > Parâmetros Globais > Acesso Restrito > POS > Grupo Venda",
+        "nome": "Utilizar configurações realizadas para homologação do POS",
+        "efeito": "Se marcado, altera comportamento da rotina de orçamento"
+      }
+    ],
+    "relacionados": ["Expedição de Orçamentos/Pedidos"],
+    "linksOficiais": [],
+    "ultimaValidacao": "2026-02-20"
+  }
+]

@@ -1,189 +1,256 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mente Pensante</title>
-<link rel="shortcut icon" href="./img/crio.png" type="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mente Pensante - Criar Processo</title>
+    <link rel="shortcut icon" href="./img/crio.png" type="image/png">
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-body {
-    background: #1a1a2e;
-    color: #fff;
-    padding: 40px 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        body {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.container {
-    max-width: 1200px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
 
-/* Responsivo */
-@media (max-width: 900px) {
-    .container {
-        grid-template-columns: 1fr;
-    }
-}
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
 
-.formulario,
-.resultado {
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+        .formulario,
+        .resultado {
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-.formulario {
-    background: #16213e;
-}
+        .formulario {
+            background: #16213e;
+        }
 
-.resultado {
-    background: #0f3460;
-}
+        .resultado {
+            background: #0f3460;
+        }
 
-h2 {
-    color: #4affb5;
-    margin-bottom: 25px;
-    border-bottom: 2px solid #4a90ff;
-    padding-bottom: 10px;
-}
+        h2 {
+            color: #4affb5;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #4a90ff;
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
 
-.campo {
-    margin-bottom: 20px;
-}
+        h3 {
+            color: #b28aff;
+            margin: 15px 0 10px 0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #b28aff;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.85em;
-    letter-spacing: 1px;
-}
+        .campo {
+            margin-bottom: 20px;
+        }
 
-input, textarea {
-    width: 100%;
-    padding: 12px 15px;
-    background: #1a1a2e;
-    border: 2px solid #4a90ff;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 1em;
-    transition: 0.3s;
-}
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b28aff;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
 
-input:focus, textarea:focus {
-    outline: none;
-    border-color: #4affb5;
-    box-shadow: 0 0 15px #4affb5;
-}
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            background: #1a1a2e;
+            border: 2px solid #4a90ff;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1em;
+            transition: 0.3s;
+        }
 
-textarea {
-    min-height: 80px;
-    resize: vertical;
-}
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #4affb5;
+            box-shadow: 0 0 15px #4affb5;
+        }
 
-.dica {
-    font-size: 0.8em;
-    color: #888;
-    margin-top: 5px;
-}
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
 
-button {
-    background: linear-gradient(135deg, #4affb5, #b28aff);
-    color: #1a1a2e;
-    border: none;
-    padding: 12px 20px;
-    font-size: 0.9em;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+        .dica {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
 
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #4affb5;
-}
+        button {
+            background: linear-gradient(135deg, #4affb5, #b28aff);
+            color: #1a1a2e;
+            border: none;
+            padding: 12px 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-.json-output {
-    background: #1a1a2e;
-    padding: 20px;
-    border-radius: 10px;
-    border-left: 4px solid #4affb5;
-    font-family: 'Courier New', monospace;
-    white-space: pre-wrap;
-    color: #b28aff;
-    margin-bottom: 20px;
-    max-height: 500px;
-    overflow-y: auto;
-}
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #4affb5;
+        }
 
-.copiar-btn {
-    background: #4a90ff;
-}
+        .json-output {
+            background: #1a1a2e;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4affb5;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            color: #b28aff;
+            margin-bottom: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
 
-.novo-processo {
-    background: #4a90ff;
-}
+        .copiar-btn {
+            background: #4a90ff;
+        }
 
-.limpar {
-    background: #ff4a4a;
-}
+        .novo-processo {
+            background: linear-gradient(135deg, #4affb5, #4a90ff);
+        }
 
-.acoes {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
+        .limpar {
+            background: #ff4a4a;
+        }
 
-.acoes button {
-    flex: 1;
-}
+        .acoes {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
 
-.contador {
-    text-align: center;
-    margin-top: 20px;
-    color: #4affb5;
-}
+        .acoes button {
+            flex: 1;
+            min-width: 120px;
+        }
 
-/* BOTÃO VOLTAR NO FINAL */
-.voltar-container {
-    margin-top: 50px;
-    text-align: center;
-}
+        .contador {
+            text-align: center;
+            margin-top: 20px;
+            color: #4affb5;
+            font-size: 1.1rem;
+            padding: 10px;
+            background: rgba(74, 255, 181, 0.1);
+            border-radius: 8px;
+        }
 
-.btn-voltar {
-    text-decoration: none;
-    background: linear-gradient(135deg, #4affb5, #b28aff);
-    color: #1a1a2e;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+        /* Seção de campos opcionais */
+        .opcionais {
+            border-left: 3px solid #4a90ff;
+            padding-left: 20px;
+            margin: 20px 0;
+        }
 
-.btn-voltar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #4affb5;
-}
-</style>
+        .toggle-opcionais {
+            background: transparent;
+            border: 2px solid #4a90ff;
+            color: #4a90ff;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .toggle-opcionais:hover {
+            background: #4a90ff;
+            color: #fff;
+        }
+
+        /* BOTÃO VOLTAR NO FINAL */
+        .voltar-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .btn-voltar {
+            text-decoration: none;
+            background: linear-gradient(135deg, #4affb5, #b28aff);
+            color: #1a1a2e;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-voltar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #4affb5;
+        }
+
+        /* Campos em grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #4affb5;
+            color: #1a1a2e;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* Preview do processo */
+        .preview-item {
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .preview-item strong {
+            color: #4affb5;
+        }
+    </style>
 </head>
 
 <body>
@@ -192,109 +259,235 @@ button:hover {
 
 <!-- FORMULÁRIO -->
 <div class="formulario">
-<h2>Criar Novo Processo</h2>
+    <h2>🚀 Criar Novo Processo</h2>
 
-<div class="campo">
-<label>ID do Processo</label>
-<input type="number" id="id" value="1" min="1">
-</div>
+    <!-- Campos Obrigatórios -->
+    <div class="grid-2">
+        <div class="campo">
+            <label>ID do Processo</label>
+            <input type="number" id="id" value="1" min="1">
+        </div>
 
-<div class="campo">
-<label>Nome</label>
-<input type="text" id="nome" placeholder="Ex: Fechamento de Caixa">
-</div>
+        <div class="campo">
+            <label>Status</label>
+            <select id="status">
+                <option value="Ativo">Ativo</option>
+                <option value="Em desenvolvimento">Em desenvolvimento</option>
+                <option value="Inativo">Inativo</option>
+                <option value="Em revisão">Em revisão</option>
+            </select>
+        </div>
+    </div>
 
-<div class="campo">
-<label>Módulo</label>
-<input type="text" id="modulo" placeholder="Ex: Financeiro">
-</div>
+    <div class="campo">
+        <label>Nome do Processo</label>
+        <input type="text" id="nome" placeholder="Ex: Emissão de Nota Fiscal">
+        <div class="dica">Nome completo e descritivo</div>
+    </div>
 
-<div class="campo">
-<label>Palavras-chave</label>
-<input type="text" id="palavrasChave" placeholder="Separar por vírgula">
-</div>
+    <div class="grid-2">
+        <div class="campo">
+            <label>Módulo</label>
+            <input type="text" id="modulo" placeholder="Ex: Faturamento">
+        </div>
 
-<div class="campo">
-<label>Caminho</label>
-<input type="text" id="caminho">
-</div>
+        <div class="campo">
+            <label>Submódulo (opcional)</label>
+            <input type="text" id="submodulo" placeholder="Ex: Nota Fiscal">
+        </div>
+    </div>
 
-<div class="campo">
-<label>Permissões (uma por linha)</label>
-<textarea id="permissoes"></textarea>
-</div>
+    <div class="campo">
+        <label>Palavras-chave</label>
+        <input type="text" id="palavrasChave" placeholder="Separar por vírgula">
+        <div class="dica">Ex: nota fiscal, emissão, faturamento, nfe</div>
+    </div>
 
-<div class="campo">
-<label>Checklist (um por linha)</label>
-<textarea id="checklist"></textarea>
-</div>
+    <div class="campo">
+        <label>Descrição</label>
+        <textarea id="descricao" placeholder="Descreva o processo..."></textarea>
+        <div class="dica">Use "- " para criar listas (cada item em uma linha)</div>
+    </div>
 
-<div class="acoes">
-<button onclick="gerarJSON()">Gerar</button>
-<button onclick="limparForm()" class="limpar">Limpar</button>
-</div>
+    <div class="campo">
+        <label>Caminho no Sistema</label>
+        <input type="text" id="caminho" placeholder="Ex: ERP > Faturamento > Nota Fiscal > Emitir">
+        <div class="dica">Caminho completo separado por ></div>
+    </div>
 
-<div class="contador">
-Total: <span id="totalProcessos">0</span>
-</div>
+    <!-- Botão para mostrar/ocultar campos opcionais -->
+    <button class="toggle-opcionais" onclick="toggleOpcionais()" type="button" id="btnToggle">
+        ⚙️ Mostrar Campos Opcionais
+    </button>
+
+    <!-- Campos Opcionais (inicialmente ocultos) -->
+    <div id="opcionais" style="display: none;">
+        <h3>Pré-requisitos</h3>
+        <div class="campo">
+            <label>Pré-requisitos (um por linha)</label>
+            <textarea id="preRequisitos" placeholder="Ex: Usuário logado&#10;Cliente selecionado&#10;Produtos no pedido"></textarea>
+        </div>
+
+        <h3>Permissões</h3>
+        <div class="campo">
+            <label>Permissões Necessárias (uma por linha)</label>
+            <textarea id="permissoes" placeholder="Ex: NFS-e_EMITIR&#10;FATURAMENTO_ACESSAR"></textarea>
+        </div>
+
+        <h3>Checklist</h3>
+        <div class="campo">
+            <label>Checklist (um por linha)</label>
+            <textarea id="checklist" placeholder="Ex: Verificar se cliente está ativo&#10;Validar estoque&#10;Confirmar natureza da operação"></textarea>
+        </div>
+
+        <h3>Manual</h3>
+        <div class="grid-2">
+            <div class="campo">
+                <label>Título do Manual</label>
+                <input type="text" id="manualTitulo" placeholder="Ex: Manual de NFS-e">
+            </div>
+            <div class="campo">
+                <label>URL do Manual</label>
+                <input type="url" id="manualUrl" placeholder="https://...">
+            </div>
+        </div>
+    </div>
+
+    <div class="acoes">
+        <button onclick="gerarJSON()">🔄 Gerar</button>
+        <button onclick="adicionarAoArray()" class="novo-processo">➕ Adicionar</button>
+        <button onclick="limparForm()" class="limpar">🗑️ Limpar</button>
+    </div>
+
+    <div class="contador">
+        📊 Total de Processos: <span id="totalProcessos">0</span>
+    </div>
 
 </div>
 
 <!-- RESULTADO -->
 <div class="resultado">
-<h2>JSON Gerado</h2>
+    <h2>📋 JSON Gerado</h2>
 
-<div id="jsonContainer" class="json-output">
-Clique em "Gerar" para criar o JSON
-</div>
+    <div id="jsonContainer" class="json-output">
+        Clique em "Gerar" para criar o JSON
+    </div>
 
-<div class="acoes">
-<button onclick="copiarJSON()" class="copiar-btn">Copiar JSON</button>
-<button onclick="adicionarAoArray()" class="novo-processo">Adicionar</button>
-</div>
+    <div class="acoes">
+        <button onclick="copiarJSON()" class="copiar-btn">📋 Copiar JSON</button>
+        <button onclick="adicionarExemplo()" class="copiar-btn">📌 Carregar Exemplo</button>
+    </div>
 
-<div class="campo" style="margin-top:20px;">
-<label>Lista completa</label>
-<textarea id="listaProcessos" style="min-height:200px;" readonly></textarea>
-</div>
+    <h3>📦 Lista Completa de Processos</h3>
+    <div class="campo" style="margin-top:10px;">
+        <textarea id="listaProcessos" style="min-height:250px;" readonly placeholder="Array completo de processos..."></textarea>
+    </div>
 
-<button onclick="copiarLista()" class="copiar-btn">Copiar Lista Completa</button>
+    <div class="acoes">
+        <button onclick="copiarLista()" class="copiar-btn">📋 Copiar Lista Completa</button>
+        <button onclick="exportarJSON()" class="copiar-btn">💾 Exportar JSON</button>
+    </div>
 
+    <h3>📊 Preview do Processo</h3>
+    <div id="preview" class="preview-item">
+        <p style="color:#888; text-align:center;">Preview aparecerá aqui</p>
+    </div>
 </div>
 </div>
 
 <!-- BOTÃO VOLTAR -->
 <div class="voltar-container">
-<a href="index.html" class="btn-voltar">⬅ Voltar para Base de Processos</a>
+    <a href="index.html" class="btn-voltar">⬅ Voltar para Base de Processos</a>
 </div>
 
 <script>
 let processos = [];
+let opcionaisVisiveis = false;
+
+function toggleOpcionais() {
+    const div = document.getElementById('opcionais');
+    const btn = document.getElementById('btnToggle');
+    
+    if (opcionaisVisiveis) {
+        div.style.display = 'none';
+        btn.innerHTML = '⚙️ Mostrar Campos Opcionais';
+    } else {
+        div.style.display = 'block';
+        btn.innerHTML = '⚙️ Ocultar Campos Opcionais';
+    }
+    
+    opcionaisVisiveis = !opcionaisVisiveis;
+}
 
 function gerarJSON() {
     let processo = montarObjeto();
     let json = JSON.stringify(processo, null, 2);
     document.getElementById('jsonContainer').innerText = json;
+    
+    // Atualizar preview
+    atualizarPreview(processo);
+    
     return processo;
 }
 
 function montarObjeto() {
+    let id = parseInt(document.getElementById('id').value) || 1;
     let nome = document.getElementById('nome').value || "Sem nome";
     let modulo = document.getElementById('modulo').value || "Geral";
+    let submodulo = document.getElementById('submodulo').value || "";
     let palavras = document.getElementById('palavrasChave').value;
+    let descricao = document.getElementById('descricao').value || "";
     let caminho = document.getElementById('caminho').value || `ERP > ${modulo} > ${nome}`;
+    let status = document.getElementById('status').value || "Ativo";
+    
+    // Processar descrição para manter formatação
+    let descricaoFormatada = descricao;
+    
+    // Pré-requisitos (opcional)
+    let preRequisitos = document.getElementById('preRequisitos').value;
+    let preRequisitosArray = preRequisitos ? 
+        preRequisitos.split('\n').filter(p => p.trim()) : [];
+    
+    // Permissões (opcional)
     let permissoes = document.getElementById('permissoes').value;
+    let permissoesArray = permissoes ? 
+        permissoes.split('\n').filter(p => p.trim()) : [];
+    
+    // Checklist (opcional)
     let checklist = document.getElementById('checklist').value;
+    let checklistArray = checklist ? 
+        checklist.split('\n').filter(c => c.trim()) : [];
+    
+    // Manual (opcional)
+    let manual = null;
+    let manualTitulo = document.getElementById('manualTitulo').value;
+    let manualUrl = document.getElementById('manualUrl').value;
+    
+    if (manualTitulo && manualUrl) {
+        manual = {
+            titulo: manualTitulo,
+            url: manualUrl
+        };
+    }
 
-    return {
-        id: parseInt(document.getElementById('id').value),
-        nome,
-        modulo,
-        palavrasChave: palavras ? palavras.split(',').map(p => p.trim()) : ["processo"],
-        caminho,
-        permissoes: permissoes ? permissoes.split('\n').filter(p => p.trim()) : [],
-        checklist: checklist ? checklist.split('\n').filter(c => c.trim()) : []
+    let processo = {
+        id: id,
+        nome: nome,
+        modulo: modulo,
+        palavrasChave: palavras ? palavras.split(',').map(p => p.trim()) : [],
+        descricao: descricaoFormatada,
+        caminho: caminho,
+        status: status
     };
+    
+    // Adicionar campos opcionais apenas se tiverem valor
+    if (submodulo) processo.submodulo = submodulo;
+    if (preRequisitosArray.length > 0) processo.preRequisitos = preRequisitosArray;
+    if (permissoesArray.length > 0) processo.permissoes = permissoesArray;
+    if (checklistArray.length > 0) processo.checklist = checklistArray;
+    if (manual) processo.manual = manual;
+    
+    return processo;
 }
 
 function adicionarAoArray() {
@@ -306,8 +499,8 @@ function adicionarAoArray() {
 }
 
 function atualizarLista() {
-    document.getElementById('listaProcessos').value =
-        JSON.stringify({ processos }, null, 2);
+    document.getElementById('listaProcessos').value = 
+        JSON.stringify(processos, null, 2);
 }
 
 function copiarJSON() {
@@ -326,6 +519,78 @@ function limparForm() {
     document.querySelectorAll("input, textarea").forEach(el => {
         if (el.id !== "id") el.value = "";
     });
+    document.getElementById('status').value = "Ativo";
+}
+
+function atualizarPreview(processo) {
+    const preview = document.getElementById('preview');
+    
+    let html = '<strong>📌 ' + processo.nome + '</strong><br>';
+    html += '<small>Módulo: ' + processo.modulo + '</small><br>';
+    
+    if (processo.submodulo) {
+        html += '<small>Submódulo: ' + processo.submodulo + '</small><br>';
+    }
+    
+    if (processo.descricao) {
+        let descPreview = processo.descricao.substring(0, 100);
+        if (processo.descricao.length > 100) descPreview += '...';
+        html += '<br>' + descPreview;
+    }
+    
+    preview.innerHTML = html;
+}
+
+function adicionarExemplo() {
+    // Preencher com um exemplo
+    document.getElementById('nome').value = "Emissão de Nota Fiscal";
+    document.getElementById('modulo').value = "Faturamento";
+    document.getElementById('submodulo').value = "Nota Fiscal";
+    document.getElementById('palavrasChave').value = "nota fiscal, emissão, nfe, faturamento";
+    document.getElementById('descricao').value = "- Rotina responsável pela emissão de Nota Fiscal de Saída no ERP\n- Permite gerar NF-e, validar impostos\n- Concluir faturamento do cliente";
+    document.getElementById('caminho').value = "ERP > Faturamento > Nota Fiscal > Emitir Nota Fiscal de Saída";
+    document.getElementById('preRequisitos').value = "Usuário logado\nCliente ativo\nPedido faturado";
+    document.getElementById('permissoes').value = "NFS-e_EMITIR\nFATURAMENTO_ACESSAR";
+    document.getElementById('checklist').value = "Verificar dados do cliente\nValidar estoque\nConfirmar impostos";
+    document.getElementById('manualTitulo').value = "Manual de NFS-e";
+    document.getElementById('manualUrl').value = "https://exemplo.com/manual";
+    
+    gerarJSON();
+}
+
+function exportarJSON() {
+    const dataStr = JSON.stringify(processos, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    
+    const exportFileDefaultName = 'processos.json';
+    
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+}
+
+// Carregar dados do localStorage se houver
+window.onload = function() {
+    const saved = localStorage.getItem('processos');
+    if (saved) {
+        processos = JSON.parse(saved);
+        document.getElementById('totalProcessos').innerText = processos.length;
+        document.getElementById('id').value = processos.length + 1;
+        atualizarLista();
+    }
+};
+
+// Salvar no localStorage quando adicionar
+function adicionarAoArray() {
+    let processo = gerarJSON();
+    processos.push(processo);
+    document.getElementById('totalProcessos').innerText = processos.length;
+    atualizarLista();
+    document.getElementById('id').value = processos.length + 1;
+    
+    // Salvar no localStorage
+    localStorage.setItem('processos', JSON.stringify(processos));
 }
 </script>
 

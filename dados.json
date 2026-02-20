@@ -1,89 +1,49 @@
 [
   {
-    "id": 1,
-    "nome": "Emissão de Nota Fiscal",
-    "modulo": "Faturamento",
-    "palavrasChave": ["nota", "nf", "emissao"],
-    "caminho": "ERP > Faturamento > Nota Fiscal > Emitir Nota Fiscal de Saída",
-    "permissoes": [
-      "Acesso ao módulo Faturamento",
-      "Permissão para emitir NF",
-      "Cadastrar Nota Fiscais",
-      "NF-e",
-      "Gerar Arquivo NF-e (Normal)"
-
-    ],
-    "checklist": [
-      "Selecionar cliente > Validar Cadastro do Cliente",
-      "Adicionar produtos > Verificar Saldo, Config. tribuitária, Natureza de Operação",
-      "Conferir impostos > Detalhamento Tributário",
-      "Confirmar emissão, após validar forma de pagamento."
-    ]
-  },
-  {
-    "id": 2,
-    "nome": "Fechamento de Caixa",
-    "modulo": "Faturamento",
-    "palavrasChave": ["caixa", "fechamento"],
-    "caminho": "ERP > Faturamento > Venda Fácil > Fechamento de Caixa",
-    "permissoes": [
-      "Venda Fácil",
-      "Desmarcar o campo Não permitir Fechamento de Caixa"
-    ],
-    "checklist": [
-      "Conferir valores, faturados, exemplo no movimento diário",
-      "Conferir se usuário, que está fechando o caixa e o mesmo, que abriu",
-      "Validar, se o valores informados, e o mesmo que faturado",
-      "Se o cliente, usa algum filtro nos relatórios, ex: desconsiderar vale trocas",
-      "Se houve a sincronizaçao das vendas, do POS com o ERP, relatórios."
-    ]
-  },
-  {
-  "id": 3,
-  "nome": "Sangria e Suprimento ",
-  "modulo": "Fiscal ",
-  "palavrasChave": [
-    "Sangria",
-    "sangria",
-    "Suprimento",
-    "suprimento"
-  ],
-  "caminho": "Faturamento > Rotinas Fiscais (Novo) > Sangria e Suprimento",
-  "permissoes": [
-  "Faturamento > Sangria e Suprimentos",
-  "Desmarcado - Bloquear Acesso Rotinas Fiscais (Cadastro Sangrias/Suprimentos)",
-  "Desmarcado - Bloquear Acesso Rotinas Fiscais (Listagem Sangrias/Suprimentos)",
-  "Data retroativa",
-  "Exclusão",
-  "Lançamento",
-  "Permitir editar sangria",
-  "Permitir lançamento de sangria e suprimentos para outro usuário",
-  "Visualizar todos os usuários no Relatório"
-  ],
-  "checklist": [
-  "Verificar se as permissões, estão marcados.",
-  "Verificar se a sangria ou suprimento foi lançada com sucesso"
-  ]
-  },
-  {
-  "id": 4,
-  "nome": "Cadastro de Orçamento de Venda - Microvix ERP",
+  "id": 1,
+  "nome": "Emissão de Nota Fiscal",
   "modulo": "Faturamento",
-  "palavrasChave": [
-    "Orçamentos/Pedidos",
-    "orçamento",
-    "pedido",
-    "orcamento",
-    "pedido"
-  ],
-  "caminho": "Faturamento - Microvix > Orçamento / Pedido > Cadastro de Orçamento de Venda",
+  "submodulo": "Nota Fiscal",
+  "descricao": "Rotina responsável pela emissão de Nota Fiscal de Saída no ERP. Permite gerar NF-e, validar impostos, natureza de operação e concluir faturamento do cliente.",
+  "palavrasChave": ["nota", "nf", "emissao", "faturamento", "nfe"],
+  "caminho": "ERP > Faturamento > Nota Fiscal > Emitir Nota Fiscal de Saída",
   "permissoes": [
-    "(Grupo Faturamento, Subgrupo Permissões Gerais de Orçamento/Pedido, Permissões: \"Orçamentos/Pedidos de Venda\" e \"Modificar observação no orçamento\")."
+    "Acesso ao módulo Faturamento",
+    "Permissão para emitir NF",
+    "Cadastrar Nota Fiscais",
+    "NF-e",
+    "Gerar Arquivo NF-e (Normal)"
   ],
   "checklist": [
- "Para utilizar a rotina de Orçamento/Pedido, é necessário que o parâmetro \"Utilizar configurações realizadas para a homologação do POS\" disponível em Empresa > Parâmetros Globais > Acesso Restrito > POS > Grupo Venda esteja desmarcado.",
- "Validar as permissões de usuário."
-  ]
-  }
-
+    "Selecionar cliente e validar cadastro",
+    "Adicionar produtos e verificar saldo",
+    "Validar configuração tributária e natureza de operação",
+    "Conferir detalhamento de impostos",
+    "Validar forma de pagamento",
+    "Confirmar emissão da NF-e"
+  ],
+  "preRequisitos": [
+    "Cliente com cadastro completo",
+    "Natureza de operação configurada",
+    "Série de NF-e configurada"
+  ],
+  "parametrosChave": [
+    {
+      "local": "Empresa > Parâmetros Globais > Faturamento",
+      "nome": "Controle de série NF-e",
+      "efeito": "Define série padrão para emissão"
+    }
+  ],
+  "relacionados": [
+    "Cadastro de Cliente",
+    "Cadastro de Produto",
+    "Natureza de Operação"
+  ],
+  "manual": {
+    "titulo": "Manual Oficial - Emissão de Nota Fiscal",
+    "url": "https://share.linx.com.br/pages/viewpage.action?pageId=168656826"
+  },
+  "status": "Ativo",
+  "ultimaValidacao": "2026-02-20"
+}
 ]

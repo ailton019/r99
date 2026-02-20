@@ -1,7 +1,4 @@
-/* ESTILO TECH-ELANCE (Elegante & Tecnológico)
-   Paleta: Midnight Navy, Electric Emerald, Soft Orchid e Deep Azure
-*/
-
+/* ESTILO TECH-ELANCE (Elegante & Tecnológico) Paleta: Midnight Navy, Electric Emerald, Soft Orchid e Deep Azure */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap');
 
 :root {
@@ -32,6 +29,7 @@ body {
     align-items: center;
     overflow-x: hidden;
     padding: 4rem 1.5rem;
+    position: relative;
 }
 
 /* Fundo Dinâmico Sutil */
@@ -39,9 +37,8 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: 
-        radial-gradient(circle at 15% 15%, rgba(74, 255, 181, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(178, 138, 255, 0.08) 0%, transparent 40%);
+    background: radial-gradient(circle at 15% 15%, rgba(74, 255, 181, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(178, 138, 255, 0.08) 0%, transparent 40%);
     z-index: -1;
 }
 
@@ -61,6 +58,8 @@ header {
     text-align: center;
     margin-bottom: 4rem;
     z-index: 10;
+    width: 100%;
+    max-width: 1200px;
 }
 
 header h1 {
@@ -86,8 +85,8 @@ header p {
 /* Barra de Busca "Float" */
 .search-container {
     width: 100%;
-    max-width: 650px;
-    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-bottom: 2rem;
     position: relative;
 }
 
@@ -112,80 +111,206 @@ header p {
     transform: translateY(-2px);
 }
 
-/* Grid de Resultados */
+/* Container de resultados */
 #resultado {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 2rem;
+    position: relative;
+    z-index: 2;
 }
 
-/* Card Estilo Neumorfismo de Vidro */
+/* Card Estilo Clean (Branco/Creme) */
 .card-processo {
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    background: #FDFCF8;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
     padding: 2rem;
     position: relative;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    color: #1a1a1a;
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Garantir que todo conteúdo interno respeite os limites */
+.card-processo * {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .card-processo:hover {
-    transform: translateY(-10px);
-    border-color: rgba(178, 138, 255, 0.4);
-    background: rgba(25, 20, 50, 0.8);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 0 20px rgba(178, 138, 255, 0.05);
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
 }
 
+/* Título em destaque escuro */
 .card-processo h3 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
-    margin-bottom: 1.2rem;
-    color: var(--primary-neon);
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    color: #0f172a;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    font-weight: 700;
+    width: 100%;
 }
 
+/* Indicador lateral discreto */
 .card-processo h3::before {
     content: "";
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 24px;
     background: var(--accent-blue);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent-blue);
+    border-radius: 4px;
+    flex-shrink: 0;
 }
 
+/* Texto interno com alto contraste */
 .card-processo p {
-    font-size: 0.95rem;
-    color: var(--text-dim);
-    margin-bottom: 0.8rem;
-    line-height: 1.4;
+    font-size: 1.05rem;
+    color: #334155;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    width: 100%;
 }
 
+/* Negrito para as chaves principais */
 .card-processo p strong {
-    color: var(--text-main);
-    font-weight: 600;
-    margin-right: 5px;
+    color: #000000;
+    font-weight: 700;
+    margin-right: 8px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    display: inline-block;
 }
 
-/* Badge de Status Refinado */
+/* ESTILO PARA LISTAS DENTRO DA DESCRIÇÃO - VERDE */
+.card-processo .descricao-lista,
+.card-processo .descricao-container ul,
+.card-processo .descricao-container ol {
+    list-style-type: disc;
+    padding-left: 25px;
+    margin: 10px 0 15px 0;
+    color: var(--primary-neon) !important; /* Verde neon */
+    font-weight: 500;
+}
+
+.card-processo .descricao-container li {
+    color: var(--primary-neon) !important; /* Verde neon */
+    margin-bottom: 8px;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+/* Estilo para o texto da descrição quando não está em lista */
+.card-processo .descricao-texto {
+    color: #334155;
+    margin: 10px 0 15px 0;
+    line-height: 1.6;
+}
+
+/* Container da descrição */
+.card-processo .descricao-container {
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Badge de Status mais sóbrio */
 .status {
     align-self: flex-start;
-    padding: 0.5rem 1.2rem;
-    background: rgba(74, 255, 181, 0.08);
-    border: 1px solid rgba(74, 255, 181, 0.2);
-    border-radius: 12px;
-    font-size: 0.75rem;
+    padding: 0.6rem 1.4rem;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: var(--primary-neon);
+    color: #475569;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-top: auto;
+    margin-top: 1.5rem;
+}
+
+/* Listas dentro do card (pré-requisitos, permissões, checklist) */
+.card-processo ul,
+.card-processo ol {
+    margin: 10px 0;
+    padding-left: 20px;
+    color: #334155;
+    width: 100%;
+}
+
+.card-processo li {
+    margin-bottom: 5px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Links dentro do card */
+.card-processo a {
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Container do botão criar */
+.actions-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Botão Criar Processo */
+.btn-criar {
+    text-decoration: none;
+    padding: 0.9rem 1.8rem;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
+    color: var(--bg-dark);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(74, 255, 181, 0.2);
+    white-space: nowrap;
+}
+
+.btn-criar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(178, 138, 255, 0.4);
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    max-width: 1400px;
+    margin-top: 3rem;
+    padding: 2rem 1.5rem 1rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--glass-border);
 }
 
 /* Scrollbar Invisível/Elegante */
@@ -204,180 +329,45 @@ header p {
 
 /* Responsividade Ajustada */
 @media (max-width: 768px) {
-    body { padding: 2rem 1rem; }
-    header h1 { font-size: 2.2rem; }
-    .card-processo { padding: 1.5rem; }
-}
-/* Botão Criar Processo */
-.actions-container {
-    width: 100%;
-    max-width: 650px;
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 3rem;
-}
-
-.btn-criar {
-    text-decoration: none;
-    padding: 0.9rem 1.8rem;
-    border-radius: 14px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
-    color: var(--bg-dark);
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(74, 255, 181, 0.2);
-}
-
-.btn-criar:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(178, 138, 255, 0.4);
-}
-/* --- AJUSTE DE RESULTADOS: CLEAN & READABLE --- */
-
-/* Grid de Resultados com mais espaço */
-#resultado {
-    width: 100%;
-    max-width: 1400px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 2rem;
-    position: relative;
-    z-index: 2;
+    body {
+        padding: 2rem 1rem;
+    }
+    
+    header h1 {
+        font-size: 2.2rem;
+    }
+    
+    #resultado {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    
+    .card-processo {
+        padding: 1.5rem;
+    }
+    
+    .card-processo h3 {
+        font-size: 1.3rem;
+    }
+    
+    .actions-container {
+        padding: 0 1rem;
+    }
+    
+    .btn-criar {
+        white-space: normal;
+        text-align: center;
+    }
 }
 
-/* Card Estilo Clean (Branco/Creme) */
-.card-processo {
-    background: #FDFCF8; /* Fundo Creme Profissional */
-    backdrop-filter: none; /* Remove o blur para ficar mais nítido */
-    border: 1px solid #e2e8f0;
-    border-radius: 16px; /* Bordas um pouco menos arredondadas para seriedade */
-    padding: 2.5rem; /* Mais respiro interno */
-    position: relative;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
-}
-
-.card-processo:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-blue);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    background: #ffffff;
-}
-
-/* Título em destaque escuro */
-.card-processo h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-    color: #0f172a; /* Azul quase preto para leitura perfeita */
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 700;
-}
-
-/* Indicador lateral discreto */
-.card-processo h3::before {
-    content: "";
-    width: 6px;
-    height: 24px;
-    background: var(--accent-blue);
-    border-radius: 4px;
-    box-shadow: none;
-}
-
-/* Texto interno com alto contraste */
-.card-processo p {
-    font-size: 1.05rem; /* Aumentado para leitura */
-    color: #334155; /* Cinza escuro */
-    margin-bottom: 1rem;
-    line-height: 1.6; /* Espaçamento entre linhas maior */
-}
-
-/* Negrito para as chaves principais */
-.card-processo p strong {
-    color: #000000; /* Preto puro para as labels */
-    font-weight: 700;
-    margin-right: 8px;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-}
-
-/* Badge de Status mais sóbrio */
-.status {
-    align-self: flex-start;
-    padding: 0.6rem 1.4rem;
-    background: #f1f5f9;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 1.5rem;
-}
-
-/* Ajuste no Input para combinar com o novo espaçamento */
-.search-container {
-    margin-bottom: 5rem;
-}
-/* Container de resultados */
-#resultado {
-    width: 100%;
-    max-width: 1100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-/* O CARD LIMPO (BRANCO/CREME) */
-.card-processo {
-    background: #FDFCF8 !important; /* Força a cor creme */
-    border-radius: 16px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    border: 1px solid #e2e8f0;
-    transition: transform 0.3s ease;
-    color: #1a1a1a; /* Texto escuro para leitura */
-}
-
-.card-processo:hover {
-    transform: translateY(-5px);
-}
-
-/* Títulos dentro do card */
-.card-processo h3 {
-    color: #0f172a;
-    font-family: 'Space Grotesk', sans-serif;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    border-left: 4px solid #4a90ff;
-    padding-left: 10px;
-}
-
-/* Labels em Negrito */
-.card-processo p strong {
-    color: #000;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-}
-
-/* Listas */
-.card-processo ul, .card-processo ol {
-    margin: 10px 0;
-    padding-left: 20px;
-    color: #334155;
+/* Ajuste para telas muito pequenas */
+@media (max-width: 480px) {
+    .card-processo {
+        padding: 1.2rem;
+    }
+    
+    .card-processo p {
+        font-size: 0.95rem;
+    }
 }
