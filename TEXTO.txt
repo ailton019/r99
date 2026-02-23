@@ -1,56 +1,4 @@
-[
-  {
-    "id": 1,
-    "nome": "Emissão de Nota Fiscal",
-    "modulo": "Faturamento",
-    "submodulo": null,
-    "descricao": null,
-    "palavrasChave": ["nota", "nf", "emissao"],
-    "caminho": "ERP > Faturamento > Nota Fiscal > Emitir Nota Fiscal de Saída",
-    "permissoes": [
-      "Acesso ao módulo Faturamento",
-      "Permissão para emitir NF",
-      "Cadastrar Nota Fiscais",
-      "NF-e",
-      "Gerar Arquivo NF-e (Normal)"
-    ],
-    "checklist": [
-      "Selecionar cliente > Validar Cadastro do Cliente",
-      "Adicionar produtos > Verificar Saldo, Config. tributária, Natureza de Operação",
-      "Conferir impostos > Detalhamento Tributário",
-      "Confirmar emissão após validar forma de pagamento"
-    ],
-    "preRequisitos": [],
-    "parametrosChave": [],
-    "relacionados": [],
-    "linksOficiais": [],
-    "ultimaValidacao": "2026-02-20"
-  },
-  {
-    "id": 2,
-    "nome": "Fechamento de Caixa",
-    "modulo": "Faturamento",
-    "submodulo": null,
-    "descricao": null,
-    "palavrasChave": ["caixa", "fechamento"],
-    "caminho": "ERP > Faturamento > Venda Fácil > Fechamento de Caixa",
-    "permissoes": [
-      "Venda Fácil",
-      "Desmarcar o campo Não permitir Fechamento de Caixa"
-    ],
-    "checklist": [
-      "Conferir valores faturados no movimento diário",
-      "Validar se o usuário que está fechando é o mesmo que abriu",
-      "Validar se os valores informados correspondem ao faturado",
-      "Verificar filtros aplicados (ex: desconsiderar vale-trocas)",
-      "Confirmar sincronização das vendas do POS com ERP"
-    ],
-    "preRequisitos": [],
-    "parametrosChave": [],
-    "relacionados": [],
-    "linksOficiais": [],
-    "ultimaValidacao": "2026-02-20"
-  },
+
   {
     "id": 3,
     "nome": "Sangria e Suprimento",
@@ -108,4 +56,3 @@
     "linksOficiais": [],
     "ultimaValidacao": "2026-02-20"
   }
-]

@@ -35,5 +35,62 @@
     "url": "https://share.linx.com.br/pages/viewpage.action?pageId=168656826"
   },
   "status": "Ativo"
-  } 
+  },
+  {
+  "id": 2,
+  "nome": "Fechamento de Caixa",
+  "modulo": "Faturamento",
+  "palavrasChave": [
+    "fechamento de caixa",
+    "fechamento",
+    "caixa"
+  ],
+  "descricao": "Fechamento de Caixa",
+  "caminho": "ERP > Faturamento > Venda Fácil > Fechamento de Caixa",
+  "status": "Ativo",
+  "checklist": [
+    "Conferir valores faturados no movimento diário",
+    "Validar se o usuário que está fechando é o mesmo que abriu",
+    "Validar se os valores informados correspondem ao faturado",
+    "Verificar filtros aplicados (ex: desconsiderar vale-trocas)",
+    "Confirmar sincronização das vendas do POS com ERP"
+  ],
+  "manual": {
+    "titulo": "Manual - Fechamento de Caixa",
+    "url": "https://share.linx.com.br/display/SHOPLINXMICRPUB/Fechamento+de+Caixa+-+Painel"
+  }
+  },
+  {
+  "id": 3,
+  "nome": "Sangria e Suprimento",
+  "modulo": "Faturamento",
+  "palavrasChave": [
+    "sangria",
+    "Sangria",
+    "Suprimento",
+    "suprimento"
+  ],
+  "descricao": "Sangria e Suprimento",
+  "caminho": "Faturamento > Rotinas Fiscais (Novo) > Sangria e Suprimento",
+  "status": "Ativo",
+  "permissoes": [
+    "Faturamento > Sangria e Suprimentos",
+    "Desmarcado - Bloquear Acesso Rotinas Fiscais (Cadastro)",
+    "Desmarcado - Bloquear Acesso Rotinas Fiscais (Listagem)",
+    "Permitir data retroativa",
+    "Permitir exclusão",
+    "Permitir lançamento",
+    "Permitir editar sangria",
+    "Permitir lançamento para outro usuário",
+    "Visualizar todos os usuários no relatório"
+  ],
+  "checklist": [
+    "Verificar se as permissões estão corretamente configuradas",
+    "Validar se a sangria ou suprimento foi lançada com sucesso"
+  ],
+  "manual": {
+    "titulo": "Manual Sangria e Suprimento",
+    "url": "https://share.linx.com.br/pages/viewpage.action?pageId=339325035"
+  }
+ }
 ]

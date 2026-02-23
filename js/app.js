@@ -98,12 +98,14 @@ function buscarProcesso() {
                 </div>
             ` : ""}
 
-            <div style="margin-top: 15px; width:100%;">
-                <p><strong>PERMISSÕES:</strong></p>
-                <ul style="padding-left: 20px;">
-                    ${p.permissoes.map(item => `<li>${item}</li>`).join("")}
-                </ul>
-            </div>
+${p.permissoes && p.permissoes.length > 0 ? `
+    <div style="margin-top: 15px; width:100%;">
+        <p><strong>PERMISSÕES:</strong></p>
+        <ul style="padding-left: 20px;">
+            ${p.permissoes.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+    </div>
+` : ""}
 
             <div style="margin-top: 10px; width:100%;">
                 <p><strong>CHECK LIST PARA ANÁLISE:</strong></p>
