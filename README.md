@@ -1,5 +1,17 @@
 📘 R99 – Base Operacional ERP N1
 
+Após diversas alterações e melhorias no projeto, defini o seguinte padrão de versionamento:
+
+V4.0.0 – Base
+Refere-se à versão estrutural do sistema, incluindo layout, funcionalidades e arquitetura principal.
+
+
+C.0.03 – Conteúdo
+Refere-se exclusivamente ao conteúdo cadastrado na base.
+O número final (03) representa a quantidade total de conteúdos atualmente registrados na base.
+
+
+
 Sistema web simples desenvolvido para centralizar e organizar rotinas operacionais de ERP, facilitando consultas rápidas para suporte N1.
 
 🎯 Objetivo
