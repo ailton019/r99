@@ -1,113 +1,119 @@
-📘 R99 – Base Operacional ERP N1
+# 📘 R99 – Base Operacional ERP N1
 
-Sistema web simples desenvolvido para centralizar e organizar rotinas operacionais de ERP, facilitando consultas rápidas para suporte N1.
+Sistema web leve desenvolvido para centralizar, organizar e padronizar rotinas operacionais de ERP, com foco em suporte N1.
 
-🎯 Objetivo
+---
 
-Criar uma base de conhecimento leve, pesquisável e organizada, contendo:
+## 🔖 Versionamento
 
-Nome da rotina
+O projeto utiliza dois níveis de versionamento:
 
-Módulo
+### 🔹 V4.0.0 – Base
+Refere-se à versão estrutural do sistema:
+- Layout
+- Arquitetura
+- Organização de código
+- Funcionalidades principais
 
-Caminho completo no sistema
+### 🔹 C.0.03 – Conteúdo
+Refere-se exclusivamente à quantidade de rotinas cadastradas na base.  
+O número final representa o total atual de conteúdos registrados.
 
-Permissões necessárias
+---
 
-Checklist de validação N1
+## 🎯 Objetivo
 
-Orientação de escalonamento
+Criar uma base de conhecimento:
 
-O projeto serve como apoio para analistas de suporte, reduzindo tempo de atendimento e padronizando análises.
+- Leve
+- Rápida
+- Pesquisável
+- Padronizada
 
-🖥️ Tecnologias Utilizadas
+Com o propósito de:
 
-HTML5
+- Reduzir tempo de atendimento
+- Padronizar análises
+- Aumentar assertividade no suporte N1
+- Centralizar conhecimento operacional
 
-CSS3
+---
 
-JavaScript
+## 📌 Estrutura das Rotinas
 
-JSON (base de dados local)
+Cada rotina cadastrada contém:
 
-Não utiliza framework — projeto 100% leve e local.
+- Nome da rotina
+- Módulo
+- Caminho completo no sistema
+- Permissões necessárias
+- Checklist de validação N1
+- Orientação de escalonamento
 
-📂 Estrutura do Projeto
-R99/
-│
-├── index.html        # Página principal
-├── dados.json        # Base de dados das rotinas
-├── css/
-│   └── style.css     # Estilização
-├── js/
-│   └── script.js     # Lógica de busca
-└── README.md
+---
 
-🔎 Funcionalidades
+## 🖥️ Tecnologias Utilizadas
 
-🔍 Campo de busca por palavra-chave
+- HTML5
+- CSS3
+- JavaScript
+- JSON (base de dados local)
 
-📄 Exibição estruturada da rotina
+> Projeto 100% leve, sem utilização de frameworks e sem backend.
 
-📋 Checklist padrão para N1
+---
 
-🛑 Orientação de quando escalar
+## 📂 Estrutura do Projeto
 
-⚡ Resposta rápida sem backend
+---
 
-🧠 Como Funciona
+## 🔎 Funcionalidades
 
-O usuário digita um termo no campo de busca.
+- 🔍 Busca por palavra-chave
+- 📄 Exibição estruturada da rotina
+- 📋 Checklist padrão para N1
+- 🛑 Diretriz clara de escalonamento
+- ⚡ Resposta imediata (sem backend)
 
-O JavaScript consulta o arquivo dados.json.
+---
 
-Se encontrar correspondência:
+## 🧠 Como Funciona
 
-Exibe a rotina formatada em tela.
+1. O usuário digita um termo no campo de busca.
+2. O JavaScript consulta o arquivo `dados.json`.
+3. Se houver correspondência:
+   - A rotina é exibida formatada na tela.
+4. Caso não exista resultado:
+   - O sistema informa que não há registros compatíveis.
 
-Caso não encontre:
+---
 
-Informa que não há resultado.
+## ➕ Como Adicionar Novas Rotinas
 
-➕ Como Adicionar Novas Rotinas
+Adicionar um novo objeto dentro do `dados.json`, seguindo o padrão:
 
-Adicionar um novo objeto dentro do dados.json seguindo o padrão:
-
+```json
 {
-  "nome": "Nome da Rotina",
-  "modulo": "Nome do Módulo",
-  "caminho": "ERP > Módulo > Menu > Submenu",
-  "permissoes": [
-    "Permissão 1",
-    "Permissão 2"
+  "id": 2,
+  "nome": "Fechamento de Caixa",
+  "modulo": "Faturamento",
+  "palavrasChave": [
+    "fechamento de caixa",
+    "fechamento",
+    "caixa"
   ],
+  "descricao": "Fechamento de Caixa",
+  "caminho": "ERP > Faturamento > Venda Fácil > Fechamento de Caixa",
+  "status": "Ativo",
   "checklist": [
-    "Validar passo 1",
-    "Validar passo 2"
+    "Conferir valores faturados no movimento diário",
+    "Validar se o usuário que está fechando é o mesmo que abriu",
+    "Validar se os valores informados correspondem ao faturado",
+    "Verificar filtros aplicados (ex: desconsiderar vale-trocas)",
+    "Confirmar sincronização das vendas do POS com ERP"
   ],
-  "escalonamento": "Quando escalar para N2"
-}
-
-🚀 Próximas Evoluções (Roadmap)
-
- Filtro por módulo
-
- Organização por categorias
-
- Integração com GitHub Issues para colaboração
-
- Campo de sugestão de melhoria
-
- Versão online hospedada
-
- Controle de versão das rotinas
-
-📌 Público-Alvo
-
-Analistas N1
-
-Suporte técnico ERP
-
-Times operacionais
-
-Base interna de conhecimento
+  "manual": {
+    "titulo": "Manual - Fechamento de Caixa",
+    "url": "https://share.linx.com.br/display/SHOPLINXMICRPUB/Fechamento+de+Caixa+-+Painel"
+  }
+  },
