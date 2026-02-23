@@ -6,7 +6,14 @@
   "submodulo": "Nota Fiscal",
   "descricao": "Rotina responsável pela emissão de Nota Fiscal de Saída no ERP. Permite gerar NF-e, validar impostos, natureza de operação e concluir faturamento do cliente.",
   "palavrasChave": ["nota", "nf", "emissao", "faturamento", "nfe"],
+
   "caminho": "ERP > Faturamento > Nota Fiscal > Emitir Nota Fiscal de Saída",
+
+  "preRequisitos": [
+    "Cliente com cadastro completo",
+    "Natureza de operação configurada",
+    "Série de NF-e configurada"
+  ],
   "permissoes": [
     "Acesso ao módulo Faturamento",
     "Permissão para emitir NF",
@@ -22,28 +29,11 @@
     "Validar forma de pagamento",
     "Confirmar emissão da NF-e"
   ],
-  "preRequisitos": [
-    "Cliente com cadastro completo",
-    "Natureza de operação configurada",
-    "Série de NF-e configurada"
-  ],
-  "parametrosChave": [
-    {
-      "local": "Empresa > Parâmetros Globais > Faturamento",
-      "nome": "Controle de série NF-e",
-      "efeito": "Define série padrão para emissão"
-    }
-  ],
-  "relacionados": [
-    "Cadastro de Cliente",
-    "Cadastro de Produto",
-    "Natureza de Operação"
-  ],
+
   "manual": {
-    "titulo": "Manual Oficial - Emissão de Nota Fiscal",
+    "titulo": "Manual - Emissão de Nota Fiscal",
     "url": "https://share.linx.com.br/pages/viewpage.action?pageId=168656826"
   },
-  "status": "Ativo",
-  "ultimaValidacao": "2026-02-20"
-}
+  "status": "Ativo"
+  } 
 ]
