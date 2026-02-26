@@ -92,5 +92,27 @@
     "titulo": "Manual Sangria e Suprimento",
     "url": "https://share.linx.com.br/pages/viewpage.action?pageId=339325035"
   }
+},
+{
+  "id": 4,
+  "nome": "Consultar nota fiscal no BD",
+  "modulo": "SQL ",
+  "palavrasChave": [
+    "consulta bd",
+    "bd",
+    "movimento",
+    "movimento",
+    "nota"
+  ],
+  "descricao": "Consulta no Banco de Dados ",
+  "caminho": "Acesse o SQL server, para fazer a consulta.",
+  "status": "Ativo",
+  "consultasSql": [
+    {
+      "comando": "select codigo_cliente, identificador, * \nfrom movimento (nolock)\nwhere documento = 7691 and serie = '5' and empresa = 23\n",
+      "explicacao": "consulta de uma nota fiscal, especifica no banco de dados.",
+      "tipo": "SELECT"
+    }
+  ]
 }
 ]
