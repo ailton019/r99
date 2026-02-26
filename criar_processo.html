@@ -32,7 +32,6 @@
             gap: 30px;
         }
 
-        /* Responsivo */
         @media (max-width: 900px) {
             .container {
                 grid-template-columns: 1fr;
@@ -68,6 +67,12 @@
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        h4 {
+            color: #4a90ff;
+            margin: 15px 0 10px 0;
+            font-size: 1rem;
         }
 
         .campo {
@@ -132,6 +137,14 @@
             box-shadow: 0 0 20px #4affb5;
         }
 
+        .btn-secundario {
+            background: linear-gradient(135deg, #4a90ff, #b28aff);
+        }
+
+        .btn-remover {
+            background: linear-gradient(135deg, #ff4a4a, #ff8a8a);
+        }
+
         .json-output {
             background: #1a1a2e;
             padding: 20px;
@@ -179,7 +192,6 @@
             border-radius: 8px;
         }
 
-        /* Seção de campos opcionais */
         .opcionais {
             border-left: 3px solid #4a90ff;
             padding-left: 20px;
@@ -199,7 +211,6 @@
             color: #fff;
         }
 
-        /* BOTÃO VOLTAR NO FINAL */
         .voltar-container {
             margin-top: 50px;
             text-align: center;
@@ -221,10 +232,15 @@
             box-shadow: 0 0 20px #4affb5;
         }
 
-        /* Campos em grid */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 15px;
         }
 
@@ -239,7 +255,6 @@
             margin-left: 10px;
         }
 
-        /* Preview do processo */
         .preview-item {
             background: rgba(255,255,255,0.05);
             padding: 10px;
@@ -249,6 +264,33 @@
 
         .preview-item strong {
             color: #4affb5;
+        }
+
+        .sql-item {
+            background: rgba(74, 144, 255, 0.1);
+            border: 1px solid #4a90ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .sql-explicacao {
+            background: #1a1a2e;
+            border-left: 3px solid #4affb5;
+            padding: 10px;
+            margin-top: 10px;
+            font-style: italic;
+            color: #b28aff;
+        }
+
+        .sql-code {
+            background: #1a1a2e;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            color: #4affb5;
+            margin: 5px 0;
+            white-space: pre-wrap;
         }
     </style>
 </head>
@@ -351,6 +393,16 @@
                 <input type="url" id="manualUrl" placeholder="https://...">
             </div>
         </div>
+
+        <!-- NOVA SEÇÃO: CONSULTAS SQL -->
+        <h3>📊 Consultas SQL</h3>
+        <div id="sqlContainer">
+            <!-- Os campos SQL serão inseridos aqui dinamicamente -->
+        </div>
+        
+        <div class="acoes">
+            <button onclick="adicionarCampoSql()" class="btn-secundario" type="button">➕ Adicionar Consulta SQL</button>
+        </div>
     </div>
 
     <div class="acoes">
@@ -403,6 +455,7 @@
 <script>
 let processos = [];
 let opcionaisVisiveis = false;
+let contadorSql = 0;
 
 function toggleOpcionais() {
     const div = document.getElementById('opcionais');
@@ -417,6 +470,45 @@ function toggleOpcionais() {
     }
     
     opcionaisVisiveis = !opcionaisVisiveis;
+}
+
+function adicionarCampoSql() {
+    const container = document.getElementById('sqlContainer');
+    const sqlId = `sql_${contadorSql}`;
+    
+    const sqlDiv = document.createElement('div');
+    sqlDiv.className = 'sql-item';
+    sqlDiv.id = sqlId;
+    sqlDiv.innerHTML = `
+        <h4>Consulta SQL ${contadorSql + 1}</h4>
+        <div class="campo">
+            <label>Comando SQL</label>
+            <textarea class="sql-comando" placeholder="Ex: SELECT * FROM usuarios WHERE ativo = 1" style="font-family: 'Courier New', monospace;"></textarea>
+        </div>
+        <div class="campo">
+            <label>Explicação da Consulta</label>
+            <textarea class="sql-explicacao-texto" placeholder="Explique o que esta consulta faz, seus parâmetros e propósito..."></textarea>
+        </div>
+        <div class="campo">
+            <label>Tipo de Consulta</label>
+            <select class="sql-tipo">
+                <option value="SELECT">SELECT (Consulta)</option>
+                <option value="INSERT">INSERT (Inserção)</option>
+                <option value="UPDATE">UPDATE (Atualização)</option>
+                <option value="DELETE">DELETE (Exclusão)</option>
+                <option value="STORED_PROCEDURE">Stored Procedure</option>
+                <option value="VIEW">View</option>
+            </select>
+        </div>
+        <button onclick="removerCampoSql('${sqlId}')" class="btn-remover" type="button">🗑️ Remover</button>
+    `;
+    
+    container.appendChild(sqlDiv);
+    contadorSql++;
+}
+
+function removerCampoSql(id) {
+    document.getElementById(id).remove();
 }
 
 function gerarJSON() {
@@ -470,6 +562,24 @@ function montarObjeto() {
         };
     }
 
+    // Consultas SQL (opcional)
+    let consultasSql = [];
+    const sqlItems = document.querySelectorAll('.sql-item');
+    
+    sqlItems.forEach(item => {
+        const comando = item.querySelector('.sql-comando')?.value;
+        const explicacao = item.querySelector('.sql-explicacao-texto')?.value;
+        const tipo = item.querySelector('.sql-tipo')?.value;
+        
+        if (comando && comando.trim()) {
+            consultasSql.push({
+                comando: comando,
+                explicacao: explicacao || "",
+                tipo: tipo || "SELECT"
+            });
+        }
+    });
+
     let processo = {
         id: id,
         nome: nome,
@@ -486,6 +596,7 @@ function montarObjeto() {
     if (permissoesArray.length > 0) processo.permissoes = permissoesArray;
     if (checklistArray.length > 0) processo.checklist = checklistArray;
     if (manual) processo.manual = manual;
+    if (consultasSql.length > 0) processo.consultasSql = consultasSql;
     
     return processo;
 }
@@ -496,6 +607,9 @@ function adicionarAoArray() {
     document.getElementById('totalProcessos').innerText = processos.length;
     atualizarLista();
     document.getElementById('id').value = processos.length + 1;
+    
+    // Salvar no localStorage
+    localStorage.setItem('processos', JSON.stringify(processos));
 }
 
 function atualizarLista() {
@@ -520,6 +634,10 @@ function limparForm() {
         if (el.id !== "id") el.value = "";
     });
     document.getElementById('status').value = "Ativo";
+    
+    // Remover todos os campos SQL
+    document.getElementById('sqlContainer').innerHTML = '';
+    contadorSql = 0;
 }
 
 function atualizarPreview(processo) {
@@ -538,22 +656,47 @@ function atualizarPreview(processo) {
         html += '<br>' + descPreview;
     }
     
+    if (processo.consultasSql && processo.consultasSql.length > 0) {
+        html += '<br><small style="color:#4affb5;">🔍 ' + processo.consultasSql.length + ' consulta(s) SQL</small>';
+    }
+    
     preview.innerHTML = html;
 }
 
 function adicionarExemplo() {
+    // Limpar campos existentes
+    limparForm();
+    
     // Preencher com um exemplo
-    document.getElementById('nome').value = "Emissão de Nota Fiscal";
-    document.getElementById('modulo').value = "Faturamento";
-    document.getElementById('submodulo').value = "Nota Fiscal";
-    document.getElementById('palavrasChave').value = "nota fiscal, emissão, nfe, faturamento";
-    document.getElementById('descricao').value = "- Rotina responsável pela emissão de Nota Fiscal de Saída no ERP\n- Permite gerar NF-e, validar impostos\n- Concluir faturamento do cliente";
-    document.getElementById('caminho').value = "ERP > Faturamento > Nota Fiscal > Emitir Nota Fiscal de Saída";
-    document.getElementById('preRequisitos').value = "Usuário logado\nCliente ativo\nPedido faturado";
-    document.getElementById('permissoes').value = "NFS-e_EMITIR\nFATURAMENTO_ACESSAR";
-    document.getElementById('checklist').value = "Verificar dados do cliente\nValidar estoque\nConfirmar impostos";
-    document.getElementById('manualTitulo').value = "Manual de NFS-e";
-    document.getElementById('manualUrl').value = "https://exemplo.com/manual";
+    document.getElementById('nome').value = "Consulta de Clientes Ativos";
+    document.getElementById('modulo').value = "Cadastros";
+    document.getElementById('submodulo').value = "Clientes";
+    document.getElementById('palavrasChave').value = "clientes, consulta, sql, banco de dados";
+    document.getElementById('descricao').value = "- Rotina para consultar clientes ativos no sistema\n- Retorna dados principais para relatórios\n- Filtra apenas registros não deletados";
+    document.getElementById('caminho').value = "ERP > Relatórios > Clientes > Clientes Ativos";
+    document.getElementById('preRequisitos').value = "Acesso ao banco de dados\nPermissão de leitura";
+    document.getElementById('permissoes').value = "CONSULTAR_CLIENTES\nRELATORIOS_ACESSAR";
+    document.getElementById('checklist').value = "Verificar permissões\nTestar performance da query\nValidar índices";
+    
+    // Adicionar exemplos de SQL
+    adicionarCampoSql();
+    adicionarCampoSql();
+    
+    // Preencher os campos SQL
+    setTimeout(() => {
+        const sqlItems = document.querySelectorAll('.sql-item');
+        if (sqlItems.length >= 2) {
+            // Primeira consulta SQL
+            sqlItems[0].querySelector('.sql-comando').value = "SELECT c.id_cliente, c.nome, c.email, c.telefone, c.data_cadastro\nFROM clientes c\nWHERE c.ativo = 1\nAND c.deletado = 0\nORDER BY c.nome ASC;";
+            sqlItems[0].querySelector('.sql-explicacao-texto').value = "Consulta principal que retorna todos os clientes ativos não deletados. Ordena por nome para melhor visualização em relatórios.";
+            sqlItems[0].querySelector('.sql-tipo').value = "SELECT";
+            
+            // Segunda consulta SQL
+            sqlItems[1].querySelector('.sql-comando').value = "SELECT COUNT(*) as total_ativos,\n       SUM(CASE WHEN data_ultima_compra > DATE_SUB(NOW(), INTERVAL 30 DAY) THEN 1 ELSE 0 END) as compraram_30dias\nFROM clientes\nWHERE ativo = 1;";
+            sqlItems[1].querySelector('.sql-explicacao-texto').value = "Consulta agregada para dashboard. Mostra total de clientes ativos e quantos compraram nos últimos 30 dias.";
+            sqlItems[1].querySelector('.sql-tipo').value = "SELECT";
+        }
+    }, 100);
     
     gerarJSON();
 }
@@ -580,18 +723,6 @@ window.onload = function() {
         atualizarLista();
     }
 };
-
-// Salvar no localStorage quando adicionar
-function adicionarAoArray() {
-    let processo = gerarJSON();
-    processos.push(processo);
-    document.getElementById('totalProcessos').innerText = processos.length;
-    atualizarLista();
-    document.getElementById('id').value = processos.length + 1;
-    
-    // Salvar no localStorage
-    localStorage.setItem('processos', JSON.stringify(processos));
-}
 </script>
 
 </body>
