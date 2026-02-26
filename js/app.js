@@ -184,7 +184,79 @@ function testarProcesso4() {
         console.log("IDs disponíveis:", processos.map(p => p.id).sort((a,b) => a - b));
     }
 }
+// Função para atualizar a lista de títulos
+function atualizarListaTitulos() {
+    const listaContainer = document.getElementById("listaProcessos");
+    const contadorSpan = document.getElementById("contadorProcessos");
+    
+    if (!listaContainer) return; // Se o elemento não existir, sai da função
+    
+    if (processos.length === 0) {
+        listaContainer.innerHTML = '<div class="empty-message">Nenhum processo cadastrado</div>';
+        contadorSpan.textContent = '0';
+        return;
+    }
+    
+    // Ordena processos por nome
+    const processosOrdenados = [...processos].sort((a, b) => 
+        a.nome.localeCompare(b.nome)
+    );
+    
+    // Atualiza o contador
+    contadorSpan.textContent = processos.length;
+    
+    // Cria a lista de títulos
+    let html = '';
+    processosOrdenados.forEach(processo => {
+        html += `
+            <div class="item-processo-lista" onclick="buscarProcessoPorTitulo('${processo.nome}')">
+                <span class="modulo-tag">${processo.modulo || 'Geral'}</span>
+                <span>${processo.nome}</span>
+            </div>
+        `;
+    });
+    
+    listaContainer.innerHTML = html;
+}
 
+// Função para buscar quando clicar em um título
+function buscarProcessoPorTitulo(titulo) {
+    // Preenche o campo de busca com o título
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        searchInput.value = titulo;
+    }
+    
+    // Chama a função de busca
+    buscarProcesso();
+    
+    // Opcional: scroll até os resultados
+    const resultadoDiv = document.getElementById("resultado");
+    if (resultadoDiv) {
+        resultadoDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// Modificar a função carregarDados para atualizar a lista automaticamente
+async function carregarDados() {
+    try {
+        const response = await fetch("dados.json");
+        processos = await response.json();
+        console.log("Processos carregados:", processos);
+        
+        // Atualiza a lista de títulos após carregar os dados
+        atualizarListaTitulos();
+        
+    } catch (erro) {
+        console.error("Erro ao carregar JSON:", erro);
+        
+        // Se houver erro, mostra mensagem na lista
+        const listaContainer = document.getElementById("listaProcessos");
+        if (listaContainer) {
+            listaContainer.innerHTML = '<div class="empty-message">Erro ao carregar processos</div>';
+        }
+    }
+}
 document.addEventListener("DOMContentLoaded", () => {
     carregarDados();
     adicionarBotaoTeste();
