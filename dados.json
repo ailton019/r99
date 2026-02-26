@@ -114,5 +114,75 @@
       "tipo": "SELECT"
     }
   ]
-}
+},
+  {
+
+  "id": 4,
+
+  "nome": "Atualização de Certificado Digital",
+
+  "modulo": "Empresa",
+
+  "palavrasChave": [
+
+    "Certificado Digital", "certificado", "Certificado", "digital","Digital"
+
+  ],
+
+  "descricao": "O certificado digital é um arquivo eletrônico que funciona como a identidade digital da empresa, garantindo a autenticidade, a integridade e a validade jurídica das informações transmitidas. Ele é utilizado, entre outras finalidades, para a emissão de notas fiscais eletrônicas e a comunicação segura com órgãos governamentais, como a SEFAZ.\n\nApós a aquisição do certificado, a contabilidade fornecerá o arquivo do certificado e a respectiva senha. Com essas informações, será possível realizar a atualização conforme as orientações",
+
+  "caminho": "ERP > Empresa > Parâmetros Globais > Certificado digital",
+
+  "status": "Ativo",
+
+  "submodulo": "Parâmetros Globais",
+
+  "preRequisitos": [
+
+    "Usuário com permissão",
+
+    "Usuário com arquivo e senha do certificado"
+
+  ],
+
+  "permissoes": [
+
+    "Diversos > Permissões Gerais do grupo diversos > Parâmetros Globais "
+
+  ],
+
+  "checklist": [
+
+    "Acesse o ERP pelo endereço: https://erp.microvix.com.br/",
+
+    "Empresa > Parâmetros Globais > Certificado Digital.",
+
+    "Selecione o arquivo do certificado, informe a senha e cadastre um e-mail para notificação de expiração futura. Após isso, clique em Salvar Alterações.",
+
+    "Para validação, verifique os campos Validade e Status, exibidos ao lado do certificado.",
+
+    "Caso a mensagem de certificado expirado ou prestes a expirar permaneça, será necessário realizar também a inclusão do certificado na plataforma TecFiscal.",
+
+    "Acesse o portal pelo endereço: https://tecfiscal.linx.com.br/#/login",
+
+    "Após o login, acesse o Menu (ícone de três linhas no canto superior esquerdo) e siga o caminho:",
+
+    "Certificado > Vincular Certificado > Cadastrar.",
+
+    "Selecione a empresa, escolha o arquivo do certificado, informe a senha, clique em Próximo e depois em Confirmar.",
+
+    "Se o certificado for exibido com status válido, o procedimento foi concluído com sucesso."
+
+  ],
+
+  "manual": {
+
+    "titulo": "Certificado Digital - Parametrizações",
+
+    "url": "https://share.linx.com.br/pages/viewpage.action?pageId=168829957"
+
+  }
+
+},
+ 
 ]
