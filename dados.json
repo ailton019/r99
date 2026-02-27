@@ -183,6 +183,52 @@
 
   }
 
+},
+  {
+  "id": 5,
+  "nome": "Devolução de Compra",
+  "modulo": "Devolução de Compra",
+  "palavrasChave": [
+    "Devolução de Compra",
+    "devolução de compra",
+    "Devolucao de Compra",
+    "devolucao de compra",
+    "Devolução",
+    "Devolucao",
+    "devolução",
+    "devolucao",
+    "Compra",
+    "compra"
+  ],
+  "descricao": "1. Objetivo\n\nEstabelecer o procedimento para devolução de mercadorias adquiridas, garantindo a correta formalização do retorno ao fornecedor e a devida regularização fiscal e financeira da operação.\n\n2. Aplicação\n\nEste procedimento aplica-se para as devoluções de compras realizadas pela empresa, independentemente do motivo (mercadoria em desacordo, avaria, erro de faturamento, desistência, entre outros).\n\n3. Descrição do Processo\n\nA devolução de compra tem como finalidade registrar o retorno da mercadoria ao fornecedor que emitiu a nota fiscal original.\n\nO processo consiste na emissão da nota fiscal de devolução correspondente, referenciando a nota fiscal de origem, assegurando:\n\nA regularidade fiscal da operação;\n\nA atualização correta do estoque;\n\nO ajuste financeiro junto ao fornecedor.",
+  "caminho": "Microvix Full ERP > Faturamento > Nota Fiscal > Devolução de compra",
+  "status": "Ativo",
+  "submodulo": "Procedimento",
+  "preRequisitos": [
+    "Ter dado entrada na nota fiscal de compra no sistema;",
+    "Fornecedor devidamente cadastrado e ativo no sistema;",
+    "Nota fiscal de origem autorizada e com chave de acesso válida;",
+    "Mercadoria conferida e disponível para devolução;",
+    "Motivo da devolução devidamente registrado;",
+    "Apenas orientação e acompanhamento do procedimento;",
+    "Cadastrado natureza de operação pra Devolução;",
+    "Cadastrado plano de pagamento para selecionar no procedimento;"
+  ],
+  "permissoes": [
+    "Empresa > Segurança > Configurar usuários > Listar > Clicar na Engrenagem:",
+    "Faturamento > Permissões gerais de nota fiscal > Cadastro de notas fiscais ",
+    "Estoque > Permissões para os relatórios de estoque > Notas de Compra (Opcional)",
+    "Faturamento > Permissões gerais do grupo faturamento > Alterar preço item (Orçamento/Fr. de Loja/Faturamento - Emissão de Nota Fiscal) (Opcional)"
+  ],
+  "checklist": [
+    "Para Microvix GO segue: Operações > Outras Operações > Devolução de compra",
+    "https://share.linx.com.br/pages/viewpage.action?pageId=231461470",
+    "Aulão da Rotina: https://www.youtube.com/watch?v=vdtAQCR6A5I"
+  ],
+  "manual": {
+    "titulo": "Microvix ERP - Faturamento - Como emitir uma devolução de compra",
+    "url": "https://share.linx.com.br/pages/viewpage.action?pageId=429443883"
+  }
 }
  
 ]
