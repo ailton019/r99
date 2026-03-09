@@ -229,6 +229,58 @@
     "titulo": "Microvix ERP - Faturamento - Como emitir uma devolução de compra",
     "url": "https://share.linx.com.br/pages/viewpage.action?pageId=429443883"
   }
-}
+},{
+    "id": 7,
+    "nome": "Balanço",
+    "modulo": "Estoque",
+    "palavrasChave": [
+      "balanco",
+      "inventario",
+      "inventário",
+      "ajuste de estoque",
+      "balanço",
+      "Balanco",
+      "Inventário"
+    ],
+    "descricao": "Para fazer um novo balanço acesse no ERP em Suprimentos > Estoque > Balanço (novo) > clica em +Novo balanço.\n\nPreencha a Descrição, Data Lançamento, Depósito e Seções. Se necessário, adicione uma nova seção clicando em \"clique aqui para cadastrar uma nova seção\". Caso queira que se o produto não for informado no balanço, ele zere o saldo no sistema, marque 'zerar quantidades' e clique em 'CADASTRAR'.\n\nSelecione o balanço criado e clique em Executar.\nEscolha 'Importação de arquivo' caso tenha o arquivo feito em txt salvo no seu computador e pronto já, ou vá na outra opção Online para fazer o balanço em tempo real através do seu celular.\n\nSelecione a Seção, o formato do arquivo e faça o upload do arquivo. É obrigatório preencher apenas os campos que tem um asterisco *, os que não tem caso não queira não precisa preencher.\nClique em Confirmar.\n\nQuando acabar o processo de inventário dentro do balanço, vá para Acompanhamento, selecione a seção e clique em finalizar. Em seguida, clique no botão Finalizar.\nO balanço será processado e aparecerá na listagem de balanços finalizados - e com isso o saldo em estoque no sistema terá sido atualizado a partir do seu balanço.\n\nVerifique o manual dessa rotina: https://share.linx.com.br/pages/viewpage.action?pageId=220969249\n\nVou te passar o aulão a respeito da rotina de Balanço dentro do sistema da Microvix: https://www.youtube.com/watch?v=8Tp2d4t22xc",
+    "caminho": "Suprimentos > Estoque > Balanço (novo) > clica em +Novo balanço.",
+    "status": "Ativo",
+    "submodulo": "Balanço",
+    "preRequisitos": [
+      "Código de Barras ou Código de Produto e Quantidade\t",
+      "Somente Código de Barras ou Código de produto\t",
+      "Código de Barras, Quantidade e Lote\t",
+      "Código de Barras, Quantidade, Lote, Data Fabricação e Data de Validade"
+    ],
+    "permissoes": [
+      "Permissões de Usuário",
+      "Para utilizar a rotina de Balanço é importante verificar as permissões de usuário disponíveis em Empresa > Segurança > Configurar Usuários > Listar > Configurar Permissões > Grupo Estoque > Subgrupo Balanço/Ajuste de Saldo:",
+      "Não permite ajuste de saldo do produto para quantidade maior que a do estoque atual (Balanço de Controle);",
+      "Não Processar Balanço;",
+      "Acessar balanço. Para ter acesso a rotina do balanço, esta permissão precisa estar marcada.",
+      "Alterar balanço (novo);",
+      "Cancelar balanço (novo);",
+      "Conferir balanço (novo);",
+      "Editar seção no balanço em andamento;",
+      "Estornar balanço (novo);",
+      "Executar balanço (novo);",
+      "Finalizar balanço (novo);",
+      "Incluir balanço (novo);",
+      "Incluir seções;",
+      "Liberar seção do balanço em andamento;",
+      "Limpar seção no balanço em andamento;",
+      "Visualizar seção no balanço em andamento;"
+    ],
+    "checklist": [
+      "Validar se o TXT está correto",
+      "Validar se o balanço está no depósito correto"
+    ],
+    "manual": {
+      "titulo": "Manual de balanço",
+      "url": "https://share.linx.com.br/pages/viewpage.action?pageId=220969249"
+    },
+    "slug": "balanco",
+    "buscaIndexada": "balanco estoque balanco para fazer um novo balanco acesse no erp em suprimentos > estoque > balanco (novo) > clica em +novo balanco.\n\npreencha a descricao, data lancamento, deposito e secoes. se necessario, adicione uma nova secao clicando em \"clique aqui para cadastrar uma nova secao\". caso queira que se o produto nao for informado no balanco, ele zere o saldo no sistema, marque 'zerar quantidades' e clique em 'cadastrar'.\n\nselecione o balanco criado e clique em executar.\nescolha 'importacao de arquivo' caso tenha o arquivo feito em txt salvo no seu computador e pronto ja, ou va na outra opcao online para fazer o balanco em tempo real atraves do seu celular.\n\nselecione a secao, o formato do arquivo e faca o upload do arquivo. e obrigatorio preencher apenas os campos que tem um asterisco *, os que nao tem caso nao queira nao precisa preencher.\nclique em confirmar.\n\nquando acabar o processo de inventario dentro do balanco, va para acompanhamento, selecione a secao e clique em finalizar. em seguida, clique no botao finalizar.\no balanco sera processado e aparecera na listagem de balancos finalizados - e com isso o saldo em estoque no sistema tera sido atualizado a partir do seu balanco.\n\nverifique o manual dessa rotina: https://share.linx.com.br/pages/viewpage.action?pageid=220969249\n\nvou te passar o aulao a respeito da rotina de balanco dentro do sistema da microvix: https://www.youtube.com/watch?v=8tp2d4t22xc balanco inventario"
+  }
  
 ]
