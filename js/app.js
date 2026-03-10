@@ -1,6 +1,6 @@
 let processos = [];
 
-async function carregarDados() {
+async function carregarDados() { 
     try {
         const response = await fetch("dados.json");
         processos = await response.json();
