@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Processo</title>
-    <link rel="shortcut icon" href="./img/crio.png" type="image/png">
+    <link rel="shortcut icon" href="./img/adicionar.png" type="image/png">
 
     <style>
         * {
@@ -25,7 +25,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -145,6 +145,10 @@
             background: linear-gradient(135deg, #ff4a4a, #ff8a8a);
         }
 
+        .btn-excluir {
+            background: linear-gradient(135deg, #ff4a4a, #ff8a8a);
+        }
+
         .json-output {
             background: #1a1a2e;
             padding: 20px;
@@ -154,8 +158,9 @@
             white-space: pre-wrap;
             color: #b28aff;
             margin-bottom: 20px;
-            max-height: 500px;
+            max-height: 600px;
             overflow-y: auto;
+            font-size: 0.9rem;
         }
 
         .copiar-btn {
@@ -164,10 +169,6 @@
 
         .novo-processo {
             background: linear-gradient(135deg, #4affb5, #4a90ff);
-        }
-
-        .limpar {
-            background: #ff4a4a;
         }
 
         .acoes {
@@ -196,19 +197,6 @@
             border-left: 3px solid #4a90ff;
             padding-left: 20px;
             margin: 20px 0;
-        }
-
-        .toggle-opcionais {
-            background: transparent;
-            border: 2px solid #4a90ff;
-            color: #4a90ff;
-            margin-bottom: 15px;
-            width: 100%;
-        }
-
-        .toggle-opcionais:hover {
-            background: #4a90ff;
-            color: #fff;
         }
 
         .voltar-container {
@@ -266,7 +254,7 @@
             color: #4affb5;
         }
 
-        .sql-item {
+        .sql-item, .manual-item {
             background: rgba(74, 144, 255, 0.1);
             border: 1px solid #4a90ff;
             border-radius: 8px;
@@ -291,6 +279,10 @@
             color: #4affb5;
             margin: 5px 0;
             white-space: pre-wrap;
+        }
+
+        .manual-item .campo {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -357,58 +349,50 @@
         <div class="dica">Caminho completo separado por ></div>
     </div>
 
-    <!-- Botão para mostrar/ocultar campos opcionais -->
-    <button class="toggle-opcionais" onclick="toggleOpcionais()" type="button" id="btnToggle">
-        ⚙️ Mostrar Campos Opcionais
-    </button>
-
-    <!-- Campos Opcionais (inicialmente ocultos) -->
-    <div id="opcionais" style="display: none;">
-        <h3>Pré-requisitos</h3>
-        <div class="campo">
-            <label>Pré-requisitos (um por linha)</label>
-            <textarea id="preRequisitos" placeholder="Ex: Usuário logado&#10;Cliente selecionado&#10;Produtos no pedido"></textarea>
-        </div>
-
-        <h3>Permissões</h3>
-        <div class="campo">
-            <label>Permissões Necessárias (uma por linha)</label>
-            <textarea id="permissoes" placeholder="Ex: NFS-e_EMITIR&#10;FATURAMENTO_ACESSAR"></textarea>
-        </div>
-
-        <h3>Checklist</h3>
-        <div class="campo">
-            <label>Checklist (um por linha)</label>
-            <textarea id="checklist" placeholder="Ex: Verificar se cliente está ativo&#10;Validar estoque&#10;Confirmar natureza da operação"></textarea>
-        </div>
-
-        <h3>Manual</h3>
-        <div class="grid-2">
-            <div class="campo">
-                <label>Título do Manual</label>
-                <input type="text" id="manualTitulo" placeholder="Ex: Manual de NFS-e">
-            </div>
-            <div class="campo">
-                <label>URL do Manual</label>
-                <input type="url" id="manualUrl" placeholder="https://...">
-            </div>
-        </div>
-
-        <!-- NOVA SEÇÃO: CONSULTAS SQL -->
-        <h3>📊 Consultas SQL</h3>
-        <div id="sqlContainer">
-            <!-- Os campos SQL serão inseridos aqui dinamicamente -->
-        </div>
-        
-        <div class="acoes">
-            <button onclick="adicionarCampoSql()" class="btn-secundario" type="button">➕ Adicionar Consulta SQL</button>
-        </div>
+    <!-- Pré-requisitos (sempre visível) -->
+    <h3>Pré-requisitos</h3>
+    <div class="campo">
+        <label>Pré-requisitos (um por linha)</label>
+        <textarea id="preRequisitos" placeholder="Ex: Usuário logado&#10;Cliente selecionado&#10;Produtos no pedido"></textarea>
     </div>
 
+    <!-- Permissões (sempre visível) -->
+    <h3>Permissões</h3>
+    <div class="campo">
+        <label>Permissões Necessárias (uma por linha)</label>
+        <textarea id="permissoes" placeholder="Ex: NFS-e_EMITIR&#10;FATURAMENTO_ACESSAR"></textarea>
+    </div>
+
+    <!-- Checklist (sempre visível) -->
+    <h3>Checklist</h3>
+    <div class="campo">
+        <label>Checklist (um por linha)</label>
+        <textarea id="checklist" placeholder="Ex: Verificar se cliente está ativo&#10;Validar estoque&#10;Confirmar natureza da operação"></textarea>
+    </div>
+
+    <!-- Manuais (múltiplos) -->
+    <h3>Manuais / Links Úteis</h3>
+    <div id="manuaisContainer">
+        <!-- Os campos de manual serão inseridos aqui dinamicamente -->
+    </div>
     <div class="acoes">
-        <button onclick="gerarJSON()">🔄 Gerar</button>
-        <button onclick="adicionarAoArray()" class="novo-processo">➕ Adicionar</button>
-        <button onclick="limparForm()" class="limpar">🗑️ Limpar</button>
+        <button onclick="adicionarManual()" class="btn-secundario" type="button">➕ Adicionar Manual</button>
+    </div>
+
+    <!-- Consultas SQL -->
+    <h3>📊 Consultas SQL</h3>
+    <div id="sqlContainer">
+        <!-- Os campos SQL serão inseridos aqui dinamicamente -->
+    </div>
+    <div class="acoes">
+        <button onclick="adicionarCampoSql()" class="btn-secundario" type="button">➕ Adicionar Consulta SQL</button>
+    </div>
+
+    <!-- Botões de ação -->
+    <div class="acoes">
+        <button onclick="gerarEAdicionar()" class="novo-processo">🔄 Gerar e Adicionar</button>
+        <button onclick="excluirUltimo()" class="btn-excluir">🗑️ Excluir Último</button>
+        <button onclick="limparForm()" class="limpar">🧹 Limpar Formulário</button>
     </div>
 
     <div class="contador">
@@ -422,22 +406,12 @@
     <h2>📋 JSON Gerado</h2>
 
     <div id="jsonContainer" class="json-output">
-        Clique em "Gerar" para criar o JSON
+        Clique em "Gerar e Adicionar" para criar o JSON
     </div>
 
     <div class="acoes">
         <button onclick="copiarJSON()" class="copiar-btn">📋 Copiar JSON</button>
         <button onclick="adicionarExemplo()" class="copiar-btn">📌 Carregar Exemplo</button>
-    </div>
-
-    <h3>📦 Lista Completa de Processos</h3>
-    <div class="campo" style="margin-top:10px;">
-        <textarea id="listaProcessos" style="min-height:250px;" readonly placeholder="Array completo de processos..."></textarea>
-    </div>
-
-    <div class="acoes">
-        <button onclick="copiarLista()" class="copiar-btn">📋 Copiar Lista Completa</button>
-        <button onclick="exportarJSON()" class="copiar-btn">💾 Exportar JSON</button>
     </div>
 
     <h3>📊 Preview do Processo</h3>
@@ -454,24 +428,39 @@
 
 <script>
 let processos = [];
-let opcionaisVisiveis = false;
 let contadorSql = 0;
+let contadorManual = 0;
 
-function toggleOpcionais() {
-    const div = document.getElementById('opcionais');
-    const btn = document.getElementById('btnToggle');
+// Adicionar campo de manual
+function adicionarManual() {
+    const container = document.getElementById('manuaisContainer');
+    const manualId = `manual_${contadorManual}`;
     
-    if (opcionaisVisiveis) {
-        div.style.display = 'none';
-        btn.innerHTML = '⚙️ Mostrar Campos Opcionais';
-    } else {
-        div.style.display = 'block';
-        btn.innerHTML = '⚙️ Ocultar Campos Opcionais';
-    }
+    const manualDiv = document.createElement('div');
+    manualDiv.className = 'manual-item';
+    manualDiv.id = manualId;
+    manualDiv.innerHTML = `
+        <h4>Manual/Link ${contadorManual + 1}</h4>
+        <div class="campo">
+            <label>Título</label>
+            <input type="text" class="manual-titulo" placeholder="Ex: Manual de NFS-e">
+        </div>
+        <div class="campo">
+            <label>URL</label>
+            <input type="url" class="manual-url" placeholder="https://...">
+        </div>
+        <button onclick="removerManual('${manualId}')" class="btn-remover" type="button">🗑️ Remover</button>
+    `;
     
-    opcionaisVisiveis = !opcionaisVisiveis;
+    container.appendChild(manualDiv);
+    contadorManual++;
 }
 
+function removerManual(id) {
+    document.getElementById(id).remove();
+}
+
+// Adicionar campo SQL
 function adicionarCampoSql() {
     const container = document.getElementById('sqlContainer');
     const sqlId = `sql_${contadorSql}`;
@@ -511,17 +500,27 @@ function removerCampoSql(id) {
     document.getElementById(id).remove();
 }
 
-function gerarJSON() {
+// Gerar JSON e adicionar ao array
+function gerarEAdicionar() {
     let processo = montarObjeto();
     let json = JSON.stringify(processo, null, 2);
     document.getElementById('jsonContainer').innerText = json;
     
+    // Adicionar ao array
+    processos.push(processo);
+    document.getElementById('totalProcessos').innerText = processos.length;
+    
+    // Atualizar ID para o próximo
+    document.getElementById('id').value = processos.length + 1;
+    
+    // Salvar no localStorage
+    localStorage.setItem('processos', JSON.stringify(processos));
+    
     // Atualizar preview
     atualizarPreview(processo);
-    
-    return processo;
 }
 
+// Montar objeto do formulário
 function montarObjeto() {
     let id = parseInt(document.getElementById('id').value) || 1;
     let nome = document.getElementById('nome').value || "Sem nome";
@@ -532,40 +531,38 @@ function montarObjeto() {
     let caminho = document.getElementById('caminho').value || `ERP > ${modulo} > ${nome}`;
     let status = document.getElementById('status').value || "Ativo";
     
-    // Processar descrição para manter formatação
-    let descricaoFormatada = descricao;
+    // Palavras-chave
+    let palavrasChaveArray = palavras ? palavras.split(',').map(p => p.trim()) : [];
     
-    // Pré-requisitos (opcional)
+    // Pré-requisitos
     let preRequisitos = document.getElementById('preRequisitos').value;
     let preRequisitosArray = preRequisitos ? 
         preRequisitos.split('\n').filter(p => p.trim()) : [];
     
-    // Permissões (opcional)
+    // Permissões
     let permissoes = document.getElementById('permissoes').value;
     let permissoesArray = permissoes ? 
         permissoes.split('\n').filter(p => p.trim()) : [];
     
-    // Checklist (opcional)
+    // Checklist
     let checklist = document.getElementById('checklist').value;
     let checklistArray = checklist ? 
         checklist.split('\n').filter(c => c.trim()) : [];
     
-    // Manual (opcional)
-    let manual = null;
-    let manualTitulo = document.getElementById('manualTitulo').value;
-    let manualUrl = document.getElementById('manualUrl').value;
+    // Manuais
+    let manuais = [];
+    const manualItems = document.querySelectorAll('.manual-item');
+    manualItems.forEach(item => {
+        const titulo = item.querySelector('.manual-titulo')?.value;
+        const url = item.querySelector('.manual-url')?.value;
+        if (titulo && url) {
+            manuais.push({ titulo, url });
+        }
+    });
     
-    if (manualTitulo && manualUrl) {
-        manual = {
-            titulo: manualTitulo,
-            url: manualUrl
-        };
-    }
-
-    // Consultas SQL (opcional)
+    // Consultas SQL
     let consultasSql = [];
     const sqlItems = document.querySelectorAll('.sql-item');
-    
     sqlItems.forEach(item => {
         const comando = item.querySelector('.sql-comando')?.value;
         const explicacao = item.querySelector('.sql-explicacao-texto')?.value;
@@ -584,62 +581,70 @@ function montarObjeto() {
         id: id,
         nome: nome,
         modulo: modulo,
-        palavrasChave: palavras ? palavras.split(',').map(p => p.trim()) : [],
-        descricao: descricaoFormatada,
+        palavrasChave: palavrasChaveArray,
+        descricao: descricao,
         caminho: caminho,
         status: status
     };
     
-    // Adicionar campos opcionais apenas se tiverem valor
     if (submodulo) processo.submodulo = submodulo;
     if (preRequisitosArray.length > 0) processo.preRequisitos = preRequisitosArray;
     if (permissoesArray.length > 0) processo.permissoes = permissoesArray;
     if (checklistArray.length > 0) processo.checklist = checklistArray;
-    if (manual) processo.manual = manual;
+    if (manuais.length > 0) processo.manuais = manuais;
     if (consultasSql.length > 0) processo.consultasSql = consultasSql;
     
     return processo;
 }
 
-function adicionarAoArray() {
-    let processo = gerarJSON();
-    processos.push(processo);
-    document.getElementById('totalProcessos').innerText = processos.length;
-    atualizarLista();
-    document.getElementById('id').value = processos.length + 1;
-    
-    // Salvar no localStorage
-    localStorage.setItem('processos', JSON.stringify(processos));
+// Excluir último processo adicionado
+function excluirUltimo() {
+    if (processos.length > 0) {
+        processos.pop();
+        document.getElementById('totalProcessos').innerText = processos.length;
+        localStorage.setItem('processos', JSON.stringify(processos));
+        
+        // Atualizar ID
+        if (processos.length > 0) {
+            document.getElementById('id').value = processos.length + 1;
+        } else {
+            document.getElementById('id').value = 1;
+        }
+        
+        // Se ainda houver processos, mostrar o último no JSON, senão mostrar vazio
+        if (processos.length > 0) {
+            let ultimo = processos[processos.length - 1];
+            document.getElementById('jsonContainer').innerText = JSON.stringify(ultimo, null, 2);
+            atualizarPreview(ultimo);
+        } else {
+            document.getElementById('jsonContainer').innerText = 'Nenhum processo cadastrado.';
+            document.getElementById('preview').innerHTML = '<p style="color:#888; text-align:center;">Nenhum processo para preview</p>';
+        }
+    }
 }
 
-function atualizarLista() {
-    document.getElementById('listaProcessos').value = 
-        JSON.stringify(processos, null, 2);
-}
-
+// Copiar JSON atual
 function copiarJSON() {
     navigator.clipboard.writeText(
         document.getElementById('jsonContainer').innerText
     );
 }
 
-function copiarLista() {
-    navigator.clipboard.writeText(
-        document.getElementById('listaProcessos').value
-    );
-}
-
+// Limpar formulário
 function limparForm() {
     document.querySelectorAll("input, textarea").forEach(el => {
         if (el.id !== "id") el.value = "";
     });
     document.getElementById('status').value = "Ativo";
     
-    // Remover todos os campos SQL
+    // Remover todos os campos SQL e manuais
     document.getElementById('sqlContainer').innerHTML = '';
+    document.getElementById('manuaisContainer').innerHTML = '';
     contadorSql = 0;
+    contadorManual = 0;
 }
 
+// Atualizar preview
 function atualizarPreview(processo) {
     const preview = document.getElementById('preview');
     
@@ -660,14 +665,17 @@ function atualizarPreview(processo) {
         html += '<br><small style="color:#4affb5;">🔍 ' + processo.consultasSql.length + ' consulta(s) SQL</small>';
     }
     
+    if (processo.manuais && processo.manuais.length > 0) {
+        html += '<br><small style="color:#4a90ff;">🔗 ' + processo.manuais.length + ' manual(is)</small>';
+    }
+    
     preview.innerHTML = html;
 }
 
+// Carregar exemplo
 function adicionarExemplo() {
-    // Limpar campos existentes
     limparForm();
     
-    // Preencher com um exemplo
     document.getElementById('nome').value = "Consulta de Clientes Ativos";
     document.getElementById('modulo').value = "Cadastros";
     document.getElementById('submodulo').value = "Clientes";
@@ -678,49 +686,56 @@ function adicionarExemplo() {
     document.getElementById('permissoes').value = "CONSULTAR_CLIENTES\nRELATORIOS_ACESSAR";
     document.getElementById('checklist').value = "Verificar permissões\nTestar performance da query\nValidar índices";
     
-    // Adicionar exemplos de SQL
+    // Adicionar manuais de exemplo
+    adicionarManual();
+    adicionarManual();
+    
+    // Adicionar SQL de exemplo
     adicionarCampoSql();
     adicionarCampoSql();
     
-    // Preencher os campos SQL
+    // Preencher campos manuais
+    setTimeout(() => {
+        const manuais = document.querySelectorAll('.manual-item');
+        if (manuais.length >= 2) {
+            manuais[0].querySelector('.manual-titulo').value = "Manual de Consultas SQL";
+            manuais[0].querySelector('.manual-url').value = "https://exemplo.com/manual-sql";
+            
+            manuais[1].querySelector('.manual-titulo').value = "Vídeo Tutorial";
+            manuais[1].querySelector('.manual-url').value = "https://youtube.com/...";
+        }
+    }, 100);
+    
+    // Preencher campos SQL
     setTimeout(() => {
         const sqlItems = document.querySelectorAll('.sql-item');
         if (sqlItems.length >= 2) {
-            // Primeira consulta SQL
             sqlItems[0].querySelector('.sql-comando').value = "SELECT c.id_cliente, c.nome, c.email, c.telefone, c.data_cadastro\nFROM clientes c\nWHERE c.ativo = 1\nAND c.deletado = 0\nORDER BY c.nome ASC;";
             sqlItems[0].querySelector('.sql-explicacao-texto').value = "Consulta principal que retorna todos os clientes ativos não deletados. Ordena por nome para melhor visualização em relatórios.";
             sqlItems[0].querySelector('.sql-tipo').value = "SELECT";
             
-            // Segunda consulta SQL
             sqlItems[1].querySelector('.sql-comando').value = "SELECT COUNT(*) as total_ativos,\n       SUM(CASE WHEN data_ultima_compra > DATE_SUB(NOW(), INTERVAL 30 DAY) THEN 1 ELSE 0 END) as compraram_30dias\nFROM clientes\nWHERE ativo = 1;";
             sqlItems[1].querySelector('.sql-explicacao-texto').value = "Consulta agregada para dashboard. Mostra total de clientes ativos e quantos compraram nos últimos 30 dias.";
             sqlItems[1].querySelector('.sql-tipo').value = "SELECT";
         }
-    }, 100);
+    }, 200);
     
-    gerarJSON();
+    gerarEAdicionar();
 }
 
-function exportarJSON() {
-    const dataStr = JSON.stringify(processos, null, 2);
-    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-    
-    const exportFileDefaultName = 'processos.json';
-    
-    let linkElement = document.createElement('a');
-    linkElement.setAttribute('href', dataUri);
-    linkElement.setAttribute('download', exportFileDefaultName);
-    linkElement.click();
-}
-
-// Carregar dados do localStorage se houver
+// Carregar dados do localStorage
 window.onload = function() {
     const saved = localStorage.getItem('processos');
     if (saved) {
         processos = JSON.parse(saved);
         document.getElementById('totalProcessos').innerText = processos.length;
         document.getElementById('id').value = processos.length + 1;
-        atualizarLista();
+        
+        if (processos.length > 0) {
+            let ultimo = processos[processos.length - 1];
+            document.getElementById('jsonContainer').innerText = JSON.stringify(ultimo, null, 2);
+            atualizarPreview(ultimo);
+        }
     }
 };
 </script>

@@ -5,41 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R99 - Base de Processos</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" href="./img/otimizacao.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/lupa.png" type="image/x-icon">
 </head>
 <body>
 
-    <header>
-        <h1>Base de Processos</h1>
-        <p>Pesquise pelo nome ou palavra-chave</p>
-    </header>
-
-    <div class="search-container">
-        <input 
-            type="text" 
-            id="searchInput" 
-            placeholder="Digite aqui..."
-            onkeyup="buscarProcesso()"
-        >
+    <div class="top-bar">
+        <div class="title-section">
+            <h1>Base de Processos</h1>
+            <span class="subtitle">R99 – Base Operacional ERP N1</span>
+        </div>
+        
+        <div class="stats-panel">
+<div class="stats-panel">
+    <div class="stat-item">
+        <span class="stat-label">Total Processos:</span>
+        <span class="stat-value" id="totalProcessos">0</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">Faturamento:</span>
+        <span class="stat-value" id="totalFaturamento">0</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">Compras:</span>
+        <span class="stat-value" id="totalCompras">0</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">Estoque:</span>
+        <span class="stat-value" id="totalEstoque">0</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">Empresa:</span>
+        <span class="stat-value" id="totalEmpresa">0</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">SQL:</span>
+        <span class="stat-value" id="totalSQL">0</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">Outros:</span>
+        <span class="stat-value" id="totalOutros">0</span>
+    </div>
+</div>
+            </div>
+        </div>
     </div>
 
-    <div id="resultado"></div>
+    <div class="main-content">
+        <div class="search-section">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Pesquisar por nome ou palavra-chave..."
+                onkeyup="buscarProcesso()"
+            >
+        </div>
 
-    <div class="actions-container">
+        <div id="resultado" class="results-grid"></div>
+
+        <div class="lista-processos-container">
+            <div class="lista-processos-header">
+                <h3>📋 Processos Cadastrados</h3>
+                <span class="contador" id="contadorProcessos">0</span>
+            </div>
+            <div class="lista-processos-scroll" id="listaProcessos">
+                <div class="loading">Carregando processos...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
         <a href="criar_processo.html" class="btn-criar">
             + Criar Novo Processo
         </a>
     </div>
-    <div class="lista-processos-card">
-    <div class="lista-header">
-        <h3>📋 Processos Cadastrados</h3>
-        <span class="contador" id="contadorProcessos">0</span>
-    </div>
-    <div class="lista-scroll" id="listaProcessos">
-        <!-- Os itens serão inseridos aqui via JavaScript -->
-        <div class="loading">Carregando processos...</div>
-    </div>
-</div>
 
     <footer>
         &copy; 2026 Ailton R99 - Base de Processos. Todos os direitos reservados.
